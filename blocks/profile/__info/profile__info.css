@@ -14,3 +14,13 @@
         "name pen"
         "position position";
 }
+
+@media screen and (max-width: 600px) {
+    .profile__info {
+        /*margin-top: 22px;*/
+        margin: 22px auto 0;
+
+        grid-template-columns: 1fr 30px;
+        gap: 14px;
+    }
+}

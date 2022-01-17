@@ -4,4 +4,17 @@
 
     border: 1px solid white;
     grid-area: pen;
+
+    width: 10px;
+    height: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .profile__pen {
+        margin: 0;
+
+        width: 8px;
+        height: 8px;
+        padding: 10px;
+    }
 }

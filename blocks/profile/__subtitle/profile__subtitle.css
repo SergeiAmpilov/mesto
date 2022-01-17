@@ -6,3 +6,10 @@
 
     grid-area: position;
 }
+
+@media screen and (max-width: 600px) {
+    .profile__subtitle {
+        font-size: 0.87rem;
+
+    }
+}

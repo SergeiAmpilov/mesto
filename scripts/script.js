@@ -8,7 +8,7 @@ let popupContainer = document.querySelector('.popup__container');
 let nameInput = document.querySelector('.popup__input-name');
 let positionInput = document.querySelector('.popup__input-position');
 
-let nameTitle = document.querySelector('.profile__text');
+let nameTitle = document.querySelector('.profile__title');
 let positionText = document.querySelector('.profile__subtitle');
 
 

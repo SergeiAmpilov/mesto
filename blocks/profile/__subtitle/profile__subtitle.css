@@ -3,4 +3,6 @@
 
     font-size: 1.12rem;
     line-height: 1.21;
+
+    grid-area: position;
 }

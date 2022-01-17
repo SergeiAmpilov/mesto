@@ -5,6 +5,11 @@ let saveButton = document.querySelector('.popup__button-submit');
 let popupLayer = document.querySelector('.popup');
 let popupContainer = document.querySelector('.popup__container');
 
+let nameInput = document.querySelector('.popup__input-name');
+let positionInput = document.querySelector('.popup__input-position');
+
+let nameTitle = document.querySelector('.profile__text');
+let positionText = document.querySelector('.profile__subtitle');
 
 
 openEditorButton.addEventListener('click', function (event) {
@@ -16,7 +21,7 @@ closeButton.addEventListener('click', function (event) {
 });
 
 saveButton.addEventListener('click', function (event) {
-    closePopup();
+    savePopup();
 
 });
 
@@ -34,4 +39,15 @@ function closePopup() {
 
 function openPopup() {
     popup.classList.remove('popup__hidden');
+
+    nameInput.value = nameTitle.textContent.trim();
+    positionInput.value = positionText.textContent.trim();
+}
+
+function savePopup() {
+
+    nameTitle.textContent = nameInput.value.trim();
+    positionText.textContent = positionInput.value.trim();
+
+    closePopup();
 }

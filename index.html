@@ -30,9 +30,12 @@
             <div class="profile__content">
                 <img src="images/custo-logo.jpg" alt="Логотип пользователя" class="profile__avatar">
                 <div class="profile__info">
-                    <h1 class="profile__title">Жак-Ив Кусто <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="profile__pen">
-                        <path d="M10 1.32827L2.60377 8.7666L1.28302 7.41936L8.66038 0L10 1.32827ZM0 10L1.96226 9.41177L0.584906 8.08349L0 10Z" fill="white"/>
-                    </svg> </h1>
+                    <h1 class="profile__title">
+                        <span class="profile__text">Жак-Ив Кусто</span>
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="profile__pen">
+                            <path d="M10 1.32827L2.60377 8.7666L1.28302 7.41936L8.66038 0L10 1.32827ZM0 10L1.96226 9.41177L0.584906 8.08349L0 10Z" fill="white"/>
+                        </svg>
+                    </h1>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
             </div>
@@ -107,9 +110,9 @@
             <img src="images/close-icon.png" alt="Иконка закрытия всплывающего окна" class="popup__close">
             <p class="popup__title">Редактировать профиль</p>
             <form action="" class="popup__form">
-                <input type="text" name="name" placeholder="Имя" class="popup__form-field">
-                <input type="text" name="position" placeholder="Должность" class="popup__form-field">
-                <button type="submit" class="popup__button-submit">Сохранить</button>
+                <input type="text" name="name" placeholder="Имя" class="popup__form-field popup__input-name">
+                <input type="text" name="position" placeholder="Должность" class="popup__form-field popup__input-position">
+                <button type="button" class="popup__button-submit">Сохранить</button>
             </form>
         </div>
 

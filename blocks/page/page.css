@@ -7,3 +7,10 @@
 
     color: white;
 }
+
+@media screen and (max-width: 1024px) {
+    .page {
+        /*max-width: 88vw;*/
+        max-width: 88%;
+    }
+}

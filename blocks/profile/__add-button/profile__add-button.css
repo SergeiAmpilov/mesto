@@ -3,3 +3,10 @@
 
     border: 2px solid white;
 }
+
+@media screen and (max-width: 768px) {
+    .profile__add-button {
+        padding: 17px calc(50% - 11px);
+        margin-top: 36px;
+    }
+}

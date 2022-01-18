@@ -5,6 +5,15 @@
 
     width: 22px;
     height: 22px;
+
+    fill: white;
+}
+
+.profile__add-button:hover {
+
+    fill: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

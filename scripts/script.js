@@ -10,6 +10,13 @@ let positionInput = document.querySelector('.popup__input-position');
 
 let nameTitle = document.querySelector('.profile__title');
 let positionText = document.querySelector('.profile__subtitle');
+let likeItems = document.querySelectorAll('.element__like');
+
+for (let i=0; i<likeItems.length; i++) {
+    likeItems[i].addEventListener('click', function (event) {
+        this.classList.toggle('element__like-active')
+    })
+}
 
 
 openEditorButton.addEventListener('click', function (event) {

@@ -8,11 +8,10 @@
     width: 10px;
     height: 10px;
 
-    fill: white;
 }
 
 .profile__pen:hover {
-    fill: rgba(255, 255, 255, 0.6);
+    opacity: 0.6;
     border: 1px solid rgba(255, 255, 255, 0.6);
     cursor: pointer;
 }

@@ -48,11 +48,11 @@ popupContainer.addEventListener('click', function (event) {
 });
 
 function closePopup() {
-    popup.classList.add('popup__hidden');
+    popup.classList.add('popup_hidden');
 }
 
 function openPopup() {
-    popup.classList.remove('popup__hidden');
+    popup.classList.remove('popup_hidden');
 
     nameInput.value = nameTitle.textContent.trim();
     positionInput.value = positionText.textContent.trim();

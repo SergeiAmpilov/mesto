@@ -1,12 +1,9 @@
 .element__like {
-
-
-
-    fill: black;
-
+    width: 22px;
+    height: 19px;
 }
 
 .element__like:hover {
-    fill: rgba(0, 0, 0, 0.5);
+    opacity: 0.5;
     cursor: pointer;
 }

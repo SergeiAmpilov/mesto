@@ -5,3 +5,9 @@
     font-size: 1.12rem;
     line-height: 1.21;
 }
+
+@media screen and (max-width: 600px) {
+    .footer__copyright {
+        font-size: 0.87rem;
+    }
+}

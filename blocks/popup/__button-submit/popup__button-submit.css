@@ -14,3 +14,17 @@
     font-weight: 400;
     line-height: 1.21;
 }
+
+@media screen and (max-width: 600px) {
+    .popup__button-submit {
+        font-size: 0.87rem;
+        width: calc(100% - 44px);
+
+        margin-top: 45px;
+        margin-bottom: 25px;
+
+        padding: 14px 0;
+
+    }
+
+}

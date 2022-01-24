@@ -35,6 +35,7 @@ closeButton.addEventListener('click', function (event) {
 });
 
 saveButton.addEventListener('click', function (event) {
+    event.preventDefault();
     savePopup();
 
 });

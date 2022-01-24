@@ -1,6 +1,8 @@
 .page {
-    margin: auto;
-    max-width: 880px;
+    /*margin: auto;*/
+    /*max-width: 880px;*/
+
+    margin: 0;
 
     background: #000000;
     font-family: 'Inter', sans-serif;
@@ -10,7 +12,6 @@
 
 @media screen and (max-width: 1024px) {
     .page {
-        /*max-width: 88vw;*/
-        max-width: 88%;
+        /*max-width: 88%;*/
     }
 }

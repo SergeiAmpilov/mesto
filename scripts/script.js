@@ -1,12 +1,11 @@
 let openEditorButton = document.querySelector('.profile__pen');
 let popup = document.querySelector('.popup');
-let closeButton = document.querySelector('.popup__close');
-let saveButton = document.querySelector('.popup__button-submit');
-let popupLayer = document.querySelector('.popup');
-let popupContainer = document.querySelector('.popup__container');
+let closeButton = popup.querySelector('.popup__close');
+let saveButton = popup.querySelector('.popup__button-submit');
+let popupContainer = popup.querySelector('.popup__container');
 
-let nameInput = document.querySelector('.popup__input-name');
-let positionInput = document.querySelector('.popup__input-position');
+let nameInput = popupContainer.querySelector('.popup__input-name');
+let positionInput = popupContainer.querySelector('.popup__input-position');
 
 let nameTitle = document.querySelector('.profile__title');
 let positionText = document.querySelector('.profile__subtitle');
@@ -40,7 +39,7 @@ saveButton.addEventListener('click', function (event) {
 
 });
 
-popupLayer.addEventListener('click', function (event) {
+popup.addEventListener('click', function (event) {
     closePopup();
 });
 

@@ -11,17 +11,24 @@ let nameTitle = document.querySelector('.profile__title');
 let positionText = document.querySelector('.profile__subtitle');
 let likeItems = document.querySelectorAll('.element__like');
 
-for (let i=0; i<likeItems.length; i++) {
-    likeItems[i].addEventListener('click', function (event) {
 
-        this.classList.toggle('element__like-active');
+function closePopup() {
+    popup.classList.add('popup_hidden');
+}
 
-        if (this.classList.contains('element__like-active')) {
-            this.src = 'images/like-vector-black.svg';
-        } else {
-            this.src = 'images/like-vector.svg';
-        }
-    })
+function openPopup() {
+    popup.classList.remove('popup_hidden');
+
+    nameInput.value = nameTitle.textContent.trim();
+    positionInput.value = positionText.textContent.trim();
+}
+
+function savePopup() {
+
+    nameTitle.textContent = nameInput.value.trim();
+    positionText.textContent = positionInput.value.trim();
+
+    closePopup();
 }
 
 
@@ -47,21 +54,15 @@ popupContainer.addEventListener('click', function (event) {
     event.stopPropagation();
 });
 
-function closePopup() {
-    popup.classList.add('popup_hidden');
-}
+for (let i=0; i<likeItems.length; i++) {
+    likeItems[i].addEventListener('click', function (event) {
 
-function openPopup() {
-    popup.classList.remove('popup_hidden');
+        this.classList.toggle('element__like-active');
 
-    nameInput.value = nameTitle.textContent.trim();
-    positionInput.value = positionText.textContent.trim();
-}
-
-function savePopup() {
-
-    nameTitle.textContent = nameInput.value.trim();
-    positionText.textContent = positionInput.value.trim();
-
-    closePopup();
+        if (this.classList.contains('element__like-active')) {
+            this.src = 'images/like-vector-black.svg';
+        } else {
+            this.src = 'images/like-vector.svg';
+        }
+    })
 }

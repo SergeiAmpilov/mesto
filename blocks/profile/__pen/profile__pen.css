@@ -12,6 +12,8 @@
     width: 24px;
     height: 24px;
 
+    transition: opacity 1s linear;
+
 }
 
 .profile__pen:hover {

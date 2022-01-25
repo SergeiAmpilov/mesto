@@ -1,8 +1,8 @@
 let openEditorButton = document.querySelector('.profile__pen');
 let popup = document.querySelector('.popup');
 let closeButton = popup.querySelector('.popup__close');
-let saveButton = popup.querySelector('.popup__button-submit');
 let popupContainer = popup.querySelector('.popup__container');
+let poupForm = popup.querySelector('.popup__form');
 
 let nameInput = popupContainer.querySelector('.popup__input-name');
 let positionInput = popupContainer.querySelector('.popup__input-position');
@@ -40,10 +40,9 @@ closeButton.addEventListener('click', function (event) {
     closePopup();
 });
 
-saveButton.addEventListener('click', function (event) {
+poupForm.addEventListener('submit', function (event) {
     event.preventDefault();
     savePopup();
-
 });
 
 popup.addEventListener('click', function (event) {

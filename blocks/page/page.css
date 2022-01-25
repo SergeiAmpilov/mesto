@@ -1,17 +1,8 @@
 .page {
-    /*margin: auto;*/
-    /*max-width: 880px;*/
-
     margin: 0;
 
     background: #000000;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
 
     color: white;
-}
-
-@media screen and (max-width: 1024px) {
-    .page {
-        /*max-width: 88%;*/
-    }
 }

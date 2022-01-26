@@ -2,7 +2,7 @@ let openEditorButton = document.querySelector('.profile__pen');
 let popup = document.querySelector('.popup');
 let closeButton = popup.querySelector('.popup__close');
 let popupContainer = popup.querySelector('.popup__container');
-let poupForm = popup.querySelector('.popup__form');
+let popupForm = popup.querySelector('.popup__form');
 
 let nameInput = popupContainer.querySelector('.popup__form-field_field_name');
 let positionInput = popupContainer.querySelector('.popup__form-field_field_position');
@@ -23,7 +23,9 @@ function openPopup() {
     positionInput.value = positionText.textContent.trim();
 }
 
-function savePopup() {
+function savePopup(event) {
+
+    event.preventDefault();
 
     nameTitle.textContent = nameInput.value.trim();
     positionText.textContent = positionInput.value.trim();
@@ -40,9 +42,9 @@ closeButton.addEventListener('click', function (event) {
     closePopup();
 });
 
-poupForm.addEventListener('submit', function (event) {
-    event.preventDefault();
-    savePopup();
+popupForm.addEventListener('submit', function (event) {
+
+    savePopup(event);
 });
 
 popup.addEventListener('click', function (event) {

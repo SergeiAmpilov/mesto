@@ -3,11 +3,9 @@
     margin-top: 48px;
     margin-bottom: 37px;
     padding: 14px 0 18px;
-
     border-radius: 2px;
     border: none;
     background-color: black;
-
     color: white;
     font-size: 1.21rem;
     font-weight: 400;
@@ -22,10 +20,8 @@
 @media screen and (max-width: 600px) {
     .popup__button-submit {
         font-size: 0.87rem;
-
         margin-top: 45px;
         margin-bottom: 25px;
-
         padding: 14px 0;
     }
 }

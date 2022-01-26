@@ -5,15 +5,11 @@
     background-repeat: no-repeat;
     padding: 0;
     margin-left: 18px;
-
     border: 1px solid white;
     grid-area: pen;
-
     width: 24px;
     height: 24px;
-
     transition: opacity 1s linear;
-
 }
 
 .profile__pen:hover {
@@ -25,10 +21,8 @@
 @media screen and (max-width: 600px) {
     .profile__pen {
         margin: 0;
-
         width: 18px;
         height: 18px;
-
         background-size: 7.5px;
     }
 }

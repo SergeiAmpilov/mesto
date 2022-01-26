@@ -3,14 +3,11 @@ let popup = document.querySelector('.popup');
 let closeButton = popup.querySelector('.popup__close');
 let popupContainer = popup.querySelector('.popup__container');
 let popupForm = popup.querySelector('.popup__form');
-
 let nameInput = popupContainer.querySelector('.popup__form-field_field_name');
 let positionInput = popupContainer.querySelector('.popup__form-field_field_position');
-
 let nameTitle = document.querySelector('.profile__title');
 let positionText = document.querySelector('.profile__subtitle');
 let likeItems = document.querySelectorAll('.element__like');
-
 
 function closePopup() {
     popup.classList.add('popup_hidden');
@@ -32,7 +29,6 @@ function savePopup(event) {
 
     closePopup();
 }
-
 
 openEditorButton.addEventListener('click', function (event) {
     openPopup();

@@ -4,8 +4,8 @@ let closeButton = popup.querySelector('.popup__close');
 let popupContainer = popup.querySelector('.popup__container');
 let poupForm = popup.querySelector('.popup__form');
 
-let nameInput = popupContainer.querySelector('.popup__input-name');
-let positionInput = popupContainer.querySelector('.popup__input-position');
+let nameInput = popupContainer.querySelector('.popup__form-field_field_name');
+let positionInput = popupContainer.querySelector('.popup__form-field_field_position');
 
 let nameTitle = document.querySelector('.profile__title');
 let positionText = document.querySelector('.profile__subtitle');

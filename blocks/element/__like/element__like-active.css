@@ -1,7 +1,0 @@
-.element__like-active {
-    background-image: url(../../../images/like-vector-black.svg);
-}
-
-.element__like-active:hover {
-    opacity: 0.5;
-}

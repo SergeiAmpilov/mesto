@@ -54,9 +54,9 @@ popupContainer.addEventListener('click', function (event) {
 for (let i=0; i<likeItems.length; i++) {
     likeItems[i].addEventListener('click', function (event) {
 
-        this.classList.toggle('element__like-active');
+        this.classList.toggle('element__like_active');
 
-        if (this.classList.contains('element__like-active')) {
+        if (this.classList.contains('element__like_active')) {
             this.src = 'images/like-vector-black.svg';
         } else {
             this.src = 'images/like-vector.svg';

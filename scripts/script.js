@@ -53,8 +53,27 @@ function renderItem(name, link) {
     imgElement.alt = name;
     imgElement.src = link;
 
-    itemContainer.appendChild(newItemElement);
+    appendEvents(newItemElement);
+
+    itemContainer.appendChild(newItemElement);    
 }
+
+function appendEvents(element) {
+    element.querySelector('.element__like').addEventListener('click', likeClickHandler);
+}
+
+const likeClickHandler = event => {
+    event.target.classList.toggle('element__like_active');
+
+    if (event.target.classList.contains('element__like_active')) {
+        event.target.src = 'images/like-vector-black.svg';
+    } else {
+        event.target.src = 'images/like-vector.svg';
+    }
+}
+
+
+//////
 
 function closePopup() {
     popup.classList.add('popup_hidden');

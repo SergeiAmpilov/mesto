@@ -7,7 +7,6 @@ let nameInput = popupContainer.querySelector('.popup__form-field_field_name');
 let positionInput = popupContainer.querySelector('.popup__form-field_field_position');
 let nameTitle = document.querySelector('.profile__title');
 let positionText = document.querySelector('.profile__subtitle');
-let likeItems = document.querySelectorAll('.element__like');
 const template = document.querySelector('.item-template').content;
 
 const itemContainer = document.querySelector('.elements');
@@ -116,18 +115,5 @@ popup.addEventListener('click', function (event) {
 popupContainer.addEventListener('click', function (event) {
     event.stopPropagation();
 });
-
-for (let i=0; i<likeItems.length; i++) {
-    likeItems[i].addEventListener('click', function (event) {
-
-        this.classList.toggle('element__like_active');
-
-        if (this.classList.contains('element__like_active')) {
-            this.src = 'images/like-vector-black.svg';
-        } else {
-            this.src = 'images/like-vector.svg';
-        }
-    })
-}
 
 render();

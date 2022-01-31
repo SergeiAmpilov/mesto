@@ -33,7 +33,7 @@
             © 2020 Mesto Russia
         </p>
     </footer>
-    <div class="popup popup_hidden">
+    <div class="popup popup_hidden popup_prefix_title">
         <div class="popup__container">
             <button class="popup__close" type="button" title="Закрыть"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
@@ -41,6 +41,17 @@
                 <input type="text" name="name" placeholder="Имя" class="popup__form-field popup__form-field_field_name">
                 <input type="text" name="position" placeholder="Должность" class="popup__form-field popup__form-field_field_position">
                 <button type="submit" class="popup__button-submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup_hidden popup_prefix_card">
+        <div class="popup__container">
+            <button class="popup__close" type="button" title="Закрыть"></button>
+            <h3 class="popup__title">Новое место</h3>
+            <form class="popup__form" name="popup-form">
+                <input type="text" name="name" placeholder="Название" class="popup__form-field popup__form-field_field_name">
+                <input type="url" name="url" placeholder="Ссылка на картинку" class="popup__form-field popup__form-field_field_url">
+                <button type="submit" class="popup__button-submit">Создать</button>
             </form>
         </div>
     </div>

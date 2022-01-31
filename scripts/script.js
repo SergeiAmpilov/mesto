@@ -1,5 +1,8 @@
 let openEditorButton = document.querySelector('.profile__pen');
-let popup = document.querySelector('.popup');
+let openCardPopupButton = document.querySelector('.profile__add-button');
+
+// popup-title
+let popup = document.querySelector('.popup_prefix_title');
 let closeButton = popup.querySelector('.popup__close');
 let popupContainer = popup.querySelector('.popup__container');
 let popupForm = popup.querySelector('.popup__form');
@@ -7,8 +10,15 @@ let nameInput = popupContainer.querySelector('.popup__form-field_field_name');
 let positionInput = popupContainer.querySelector('.popup__form-field_field_position');
 let nameTitle = document.querySelector('.profile__title');
 let positionText = document.querySelector('.profile__subtitle');
-const template = document.querySelector('.item-template').content;
 
+// popup-card
+let popupCard = document.querySelector('.popup_prefix_card');
+let popupCardContainer = popupCard.querySelector('.popup__container');
+let popupCardCloseButton = popupCard.querySelector('.popup__close');
+let popupCardForm = popupCard.querySelector('.popup__form');
+
+
+const template = document.querySelector('.item-template').content;
 const itemContainer = document.querySelector('.elements');
 const initialCards = [
     {
@@ -115,5 +125,39 @@ popup.addEventListener('click', function (event) {
 popupContainer.addEventListener('click', function (event) {
     event.stopPropagation();
 });
+
+// events for popup-card
+function closePopupCard() {
+    popupCard.classList.add('popup_hidden');
+}
+
+function openPopupCard() {
+    popupCard.classList.remove('popup_hidden');
+}
+
+openCardPopupButton.addEventListener('click', function (event) {
+    openPopupCard();
+});
+
+popupCardCloseButton.addEventListener('click', function (event) {
+    closePopupCard();
+});
+
+popupCard.addEventListener('click', () => {
+    closePopupCard();
+});
+
+popupCardContainer.addEventListener('click', function (event) {
+    event.stopPropagation();
+});
+
+popupCardForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    closePopupCard();
+})
+
+
+
+///
 
 render();

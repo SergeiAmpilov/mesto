@@ -16,6 +16,8 @@ let popupCard = document.querySelector('.popup_prefix_card');
 let popupCardContainer = popupCard.querySelector('.popup__container');
 let popupCardCloseButton = popupCard.querySelector('.popup__close');
 let popupCardForm = popupCard.querySelector('.popup__form');
+let popupCardName = popupCard.querySelector('.popup__form-field_field_name');
+let popupCardUrl = popupCard.querySelector('.popup__form-field_field_url');
 
 
 const template = document.querySelector('.item-template').content;
@@ -64,7 +66,8 @@ function renderItem(name, link) {
 
     appendEvents(newItemElement);
 
-    itemContainer.appendChild(newItemElement);    
+    // itemContainer.appendChild(newItemElement);    
+    itemContainer.prepend(newItemElement);    
 }
 
 function appendEvents(element) {
@@ -129,6 +132,11 @@ popupContainer.addEventListener('click', function (event) {
 // events for popup-card
 function closePopupCard() {
     popupCard.classList.add('popup_hidden');
+
+    // очистим поля
+    popupCardName.value = '';
+    popupCardUrl.value = '';
+
 }
 
 function openPopupCard() {
@@ -153,6 +161,7 @@ popupCardContainer.addEventListener('click', function (event) {
 
 popupCardForm.addEventListener('submit', function (event) {
     event.preventDefault();
+    renderItem(popupCardName.value.trim(), popupCardUrl.value.trim());
     closePopupCard();
 })
 

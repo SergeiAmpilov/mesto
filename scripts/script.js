@@ -95,8 +95,15 @@ const removeClickHandler = event => {
 
 const openImgkHandler = event => {
     let newPopupDetailImg = imgFullTemplate.cloneNode(true);
+    let imgFull = newPopupDetailImg.querySelector('.image-full__img');
+    let imgDescription = newPopupDetailImg.querySelector('.image-full__text');
+
 
     // тут нужно еще дозаполнить параметры
+    imgFull.src = event.target.src;
+    imgFull.alt = event.target.alt;
+    imgDescription.innerText = event.target.alt;
+
     newPopupDetailImg.querySelector('.images-full__close').addEventListener('click', (event) => {
         event.target.closest('.images-full__cover').remove();
     });

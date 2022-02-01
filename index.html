@@ -49,8 +49,8 @@
             <button class="popup__close" type="button" title="Закрыть"></button>
             <h3 class="popup__title">Новое место</h3>
             <form class="popup__form" name="popup-form">
-                <input type="text" name="name" placeholder="Название" class="popup__form-field popup__form-field_field_name">
-                <input type="url" name="url" placeholder="Ссылка на картинку" class="popup__form-field popup__form-field_field_url">
+                <input type="text" name="name" placeholder="Название" class="popup__form-field popup__form-field_field_name" required>
+                <input type="url" name="url" placeholder="Ссылка на картинку" class="popup__form-field popup__form-field_field_url" required>
                 <button type="submit" class="popup__button-submit">Создать</button>
             </form>
         </div>
@@ -62,6 +62,7 @@
                 <h2 class="element__title">Карачаевск</h2>
                 <button class="element__like" type="button" title="Нравится"></button>
             </div>
+            <img src="images/trash-vector.svg" alt="Удалить карточку" class="element__trash">
         </li>
     </template>
     <script src="scripts/script.js"></script>

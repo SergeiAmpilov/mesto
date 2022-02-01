@@ -72,6 +72,7 @@ function renderItem(name, link) {
 
 function appendEvents(element) {
     element.querySelector('.element__like').addEventListener('click', likeClickHandler);
+    element.querySelector('.element__trash').addEventListener('click', removeClickHandler)
 }
 
 const likeClickHandler = event => {
@@ -82,6 +83,10 @@ const likeClickHandler = event => {
     } else {
         event.target.src = 'images/like-vector.svg';
     }
+}
+
+const removeClickHandler = event => {
+    event.target.closest('.element').remove();
 }
 
 

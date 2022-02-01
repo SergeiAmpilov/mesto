@@ -109,10 +109,17 @@ const openImgkHandler = event => {
     });
 
     body.appendChild(newPopupDetailImg);
+    setTimeout( () => {
+        body.querySelector('.images-full__cover').classList.add('popup_visible');
+    }, 10);
 }
 
+
 const closeDetailCardPopupHandler = function (event) {
-    event.target.closest('.images-full__cover').remove();
+    body.querySelector('.images-full__cover').classList.remove('popup_visible');
+    setTimeout(() => {
+        event.target.closest('.images-full__cover').remove();
+    }, 500);
 }
 
 //////
@@ -193,9 +200,5 @@ popupCardForm.addEventListener('submit', function (event) {
     renderItem(popupCardName.value.trim(), popupCardUrl.value.trim());
     closePopupCard();
 })
-
-
-
-///
 
 render();

@@ -161,7 +161,7 @@ popupContainer.addEventListener('click', function (event) {
 
 // events for popup-card
 function closePopupCard() {
-    popupCard.classList.add('popup_hidden');
+    popupCard.classList.remove('popup_visible');
 
     // очистим поля
     popupCardName.value = '';
@@ -169,7 +169,7 @@ function closePopupCard() {
 }
 
 function openPopupCard() {
-    popupCard.classList.remove('popup_hidden');
+    popupCard.classList.add('popup_visible');
 }
 
 openCardPopupButton.addEventListener('click', function (event) {

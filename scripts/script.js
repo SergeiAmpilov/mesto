@@ -118,11 +118,11 @@ const closeDetailCardPopupHandler = function (event) {
 //////
 
 function closePopup() {
-    popup.classList.add('popup_hidden');
+    popup.classList.remove('popup_visible');
 }
 
 function openPopup() {
-    popup.classList.remove('popup_hidden');
+    popup.classList.add('popup_visible');
 
     nameInput.value = nameTitle.textContent.trim();
     positionInput.value = positionText.textContent.trim();

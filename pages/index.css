@@ -29,3 +29,7 @@
 @import url(../blocks/popup/__form-field/popup__form-field.css);
 @import url(../blocks/popup/__button-submit/popup__button-submit.css);
 @import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/image-full/__img/image-full__img.css);
+@import url(../blocks/image-full/__content/image-full__content.css);
+@import url(../blocks/image-full/__close/image-full__close.css);
+

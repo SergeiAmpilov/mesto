@@ -1,5 +1,6 @@
 let openEditorButton = document.querySelector('.profile__pen');
 let openCardPopupButton = document.querySelector('.profile__add-button');
+let body = document.querySelector('.page');
 
 // popup-title
 let popup = document.querySelector('.popup_prefix_title');
@@ -18,6 +19,9 @@ let popupCardCloseButton = popupCard.querySelector('.popup__close');
 let popupCardForm = popupCard.querySelector('.popup__form');
 let popupCardName = popupCard.querySelector('.popup__form-field_field_name');
 let popupCardUrl = popupCard.querySelector('.popup__form-field_field_url');
+
+// image-full
+let imgFullTemplate = document.querySelector('.image-full').content;
 
 
 const template = document.querySelector('.item-template').content;
@@ -65,14 +69,14 @@ function renderItem(name, link) {
     imgElement.src = link;
 
     appendEvents(newItemElement);
-
-    // itemContainer.appendChild(newItemElement);    
+  
     itemContainer.prepend(newItemElement);    
 }
 
 function appendEvents(element) {
     element.querySelector('.element__like').addEventListener('click', likeClickHandler);
-    element.querySelector('.element__trash').addEventListener('click', removeClickHandler)
+    element.querySelector('.element__trash').addEventListener('click', removeClickHandler);
+    element.querySelector('.element__image').addEventListener('click', openImgkHandler);
 }
 
 const likeClickHandler = event => {
@@ -89,6 +93,16 @@ const removeClickHandler = event => {
     event.target.closest('.element').remove();
 }
 
+const openImgkHandler = event => {
+    let newPopupDetailImg = imgFullTemplate.cloneNode(true);
+
+    // тут нужно еще дозаполнить параметры
+    newPopupDetailImg.querySelector('.images-full__close').addEventListener('click', (event) => {
+        event.target.closest('.images-full__cover').remove();
+    });
+
+    body.appendChild(newPopupDetailImg);
+}
 
 //////
 
@@ -141,7 +155,6 @@ function closePopupCard() {
     // очистим поля
     popupCardName.value = '';
     popupCardUrl.value = '';
-
 }
 
 function openPopupCard() {

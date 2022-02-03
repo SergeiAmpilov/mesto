@@ -116,10 +116,6 @@ popupImageContainer.addEventListener('click', e => e.stopPropagation());
 
 //////
 
-// function closePopup() {
-//     popupTitle.classList.remove('popup_visible');
-// }
-
 function openPopupTitle() {
     
     nameInput.value = nameTitle.textContent.trim();
@@ -128,7 +124,7 @@ function openPopupTitle() {
     openPopup(popupTitle);
 }
 
-function savePopup(event) {
+function submitProfileForm(event) {
     event.preventDefault();
 
     nameTitle.textContent = nameInput.value.trim();
@@ -146,7 +142,7 @@ closeButtonTitle.addEventListener('click', function (event) {
 });
 
 popupForm.addEventListener('submit', function (event) {
-    savePopup(event);
+    submitProfileForm(event);
 });
 
 popupTitle.addEventListener('click', function (event) {
@@ -189,7 +185,6 @@ popupCardForm.addEventListener('submit', function (event) {
     closePopupCard();
 });
 
-/* new */
 function openPopup(element) {
     element.classList.add('popup_visible');
 }

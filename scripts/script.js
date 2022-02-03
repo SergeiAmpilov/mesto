@@ -20,8 +20,14 @@ let popupCardForm = popupCard.querySelector('.popup__form');
 let popupCardName = popupCard.querySelector('.popup__form-field_field_name');
 let popupCardUrl = popupCard.querySelector('.popup__form-field_field_url');
 
-// image-full
-let imgFullTemplate = document.querySelector('.image-full').content;
+// popup-image
+let popupImage = document.querySelector('.popup_prefix_image');
+let closeButtonImage = popupImage.querySelector('.popup__close');
+let popupImageContainer = popupImage.querySelector('.popup__container');
+let popupImageImg = popupImage.querySelector('.image-full__img');
+let popupImageText = popupImage.querySelector('.image-full__text');
+
+
 
 
 const template = document.querySelector('.item-template').content;
@@ -93,34 +99,44 @@ const removeClickHandler = event => {
     event.target.closest('.element').remove();
 }
 
+////
+const closeImgPopupHandlet = evt => {
+    popupImage.classList.remove('popup_visible');
+};
+
 const openImgkHandler = event => {
-    let newPopupDetailImg = imgFullTemplate.cloneNode(true);
-    let imgFull = newPopupDetailImg.querySelector('.image-full__img');
-    let imgDescription = newPopupDetailImg.querySelector('.image-full__text');
+    
+    popupImage.classList.add('popup_visible');
 
-    imgFull.src = event.target.src;
-    imgFull.alt = event.target.alt;
-    imgDescription.innerText = event.target.alt;
+    popupImageImg.src = event.target.src;
+    popupImageImg.alt = event.target.alt;
+    popupImageText.innerText = event.target.alt;
 
-    newPopupDetailImg.querySelector('.images-full__close').addEventListener('click', closeDetailCardPopupHandler);
-    newPopupDetailImg.querySelector('.images-full__cover').addEventListener('click', closeDetailCardPopupHandler);
-    newPopupDetailImg.querySelector('.images-full__content').addEventListener('click', e => {
-        e.stopPropagation();
-    });
 
-    body.appendChild(newPopupDetailImg);
-    setTimeout( () => {
-        body.querySelector('.images-full__cover').classList.add('popup_visible');
-    }, 10);
+    // let newPopupDetailImg = imgFullTemplate.cloneNode(true);
+    // let imgFull = newPopupDetailImg.querySelector('.image-full__img');
+    // let imgDescription = newPopupDetailImg.querySelector('.image-full__text');
+
+    // imgFull.src = event.target.src;
+    // imgFull.alt = event.target.alt;
+    // imgDescription.innerText = event.target.alt;
+
+    // newPopupDetailImg.querySelector('.images-full__close').addEventListener('click', closeDetailCardPopupHandler);
+    // newPopupDetailImg.querySelector('.images-full__cover').addEventListener('click', closeDetailCardPopupHandler);
+    // newPopupDetailImg.querySelector('.images-full__content').addEventListener('click', e => {
+    //     e.stopPropagation();
+    // });
+
+    // body.appendChild(newPopupDetailImg);
+    // setTimeout( () => {
+    //     body.querySelector('.images-full__cover').classList.add('popup_visible');
+    // }, 10);
 }
 
+closeButtonImage.addEventListener('click', closeImgPopupHandlet);
+popupImage.addEventListener('click', closeImgPopupHandlet);
+popupImageContainer.addEventListener('click', e => e.stopPropagation());
 
-const closeDetailCardPopupHandler = function (event) {
-    body.querySelector('.images-full__cover').classList.remove('popup_visible');
-    setTimeout(() => {
-        event.target.closest('.images-full__cover').remove();
-    }, 500);
-}
 
 //////
 

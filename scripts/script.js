@@ -22,8 +22,8 @@ let popupCardUrl = popupCard.querySelector('.popup__form-field_field_url');
 
 // popup-image
 let popupImage = document.querySelector('.popup_prefix_image');
-let closeButtonImage = popupImage.querySelector('.popup__close');
-let popupImageContainer = popupImage.querySelector('.popup__container');
+let closeButtonImage = popupImage.querySelector('.images-full__close');
+let popupImageContainer = popupImage.querySelector('.images-full__content');
 let popupImageImg = popupImage.querySelector('.image-full__img');
 let popupImageText = popupImage.querySelector('.image-full__text');
 

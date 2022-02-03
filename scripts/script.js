@@ -90,12 +90,6 @@ function appendEvents(element) {
 
 const likeClickHandler = event => {
     event.target.classList.toggle('element__like_active');
-
-    if (event.target.classList.contains('element__like_active')) {
-        event.target.src = 'images/like-vector-black.svg';
-    } else {
-        event.target.src = 'images/like-vector.svg';
-    }
 }
 
 const removeClickHandler = event => {
@@ -104,15 +98,15 @@ const removeClickHandler = event => {
 
 ////
 const closeImgPopupHandlet = evt => {
-    popupImage.classList.remove('popup_visible');
+    closePopup(popupImage);
 };
 
 const openImgkHandler = event => {
-    popupImage.classList.add('popup_visible');
-
     popupImageImg.src = event.target.src;
     popupImageImg.alt = event.target.alt;
     popupImageText.innerText = event.target.alt;
+
+    openPopup(popupImage);
 }
 
 closeButtonImage.addEventListener('click', closeImgPopupHandlet);
@@ -122,42 +116,41 @@ popupImageContainer.addEventListener('click', e => e.stopPropagation());
 
 //////
 
-function closePopup() {
-    popupTitle.classList.remove('popup_visible');
-}
+// function closePopup() {
+//     popupTitle.classList.remove('popup_visible');
+// }
 
-function openPopup() {
-    popupTitle.classList.add('popup_visible');
-
+function openPopupTitle() {
+    
     nameInput.value = nameTitle.textContent.trim();
     positionInput.value = positionText.textContent.trim();
+
+    openPopup(popupTitle);
 }
 
 function savePopup(event) {
-
     event.preventDefault();
 
     nameTitle.textContent = nameInput.value.trim();
     positionText.textContent = positionInput.value.trim();
 
-    closePopup();
+    closePopup(popupTitle);
 }
 
 openEditorButton.addEventListener('click', function (event) {
-    openPopup();
+    openPopupTitle();
 });
 
 closeButtonTitle.addEventListener('click', function (event) {
-    closePopup();
+    closePopup(popupTitle);
 });
 
 popupForm.addEventListener('submit', function (event) {
-
     savePopup(event);
 });
 
 popupTitle.addEventListener('click', function (event) {
-    closePopup();
+    closePopup(popupTitle);
 });
 
 popupContainerTitle.addEventListener('click', function (event) {
@@ -166,19 +159,15 @@ popupContainerTitle.addEventListener('click', function (event) {
 
 // events for popup-card
 function closePopupCard() {
-    popupCard.classList.remove('popup_visible');
+    closePopup(popupCard);
 
     // очистим поля
     popupCardName.value = '';
     popupCardUrl.value = '';
 }
 
-function openPopupCard() {
-    popupCard.classList.add('popup_visible');
-}
-
 openCardPopupButton.addEventListener('click', function (event) {
-    openPopupCard();
+    openPopup(popupCard);
 });
 
 popupCardCloseButton.addEventListener('click', function (event) {
@@ -198,6 +187,16 @@ popupCardForm.addEventListener('submit', function (event) {
     const newCard = renderItem(popupCardName.value.trim(), popupCardUrl.value.trim());
     renderCard(newCard, itemContainer);
     closePopupCard();
-})
+});
+
+/* new */
+function openPopup(element) {
+    element.classList.add('popup_visible');
+}
+
+function closePopup(element) {
+    element.classList.remove('popup_visible');
+
+}
 
 render();

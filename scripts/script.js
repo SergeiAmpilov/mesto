@@ -6,7 +6,7 @@ const body = document.querySelector('.page');
 const popupTitle = document.querySelector('.popup_prefix_title');
 const closeButtonTitle = popupTitle.querySelector('.popup__close');
 const popupContainerTitle = popupTitle.querySelector('.popup__container');
-const popupForm = popupTitle.querySelector('.popup__form');
+const popupTitleForm = popupTitle.querySelector('.popup__form');
 const nameInput = popupContainerTitle.querySelector('.popup__form-field_field_name');
 const positionInput = popupContainerTitle.querySelector('.popup__form-field_field_position');
 const nameTitle = document.querySelector('.profile__title');
@@ -141,7 +141,7 @@ closeButtonTitle.addEventListener('click', function (event) {
     closePopup(popupTitle);
 });
 
-popupForm.addEventListener('submit', function (event) {
+popupTitleForm.addEventListener('submit', function (event) {
     submitProfileForm(event);
 });
 

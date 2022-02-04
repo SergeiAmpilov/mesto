@@ -1,31 +1,31 @@
-let openEditorButton = document.querySelector('.profile__pen');
-let openCardPopupButton = document.querySelector('.profile__add-button');
-let body = document.querySelector('.page');
+const openEditorButton = document.querySelector('.profile__pen');
+const openCardPopupButton = document.querySelector('.profile__add-button');
+const body = document.querySelector('.page');
 
 // popup-title
-let popupTitle = document.querySelector('.popup_prefix_title');
-let closeButtonTitle = popupTitle.querySelector('.popup__close');
-let popupContainerTitle = popupTitle.querySelector('.popup__container');
-let popupForm = popupTitle.querySelector('.popup__form');
-let nameInput = popupContainerTitle.querySelector('.popup__form-field_field_name');
-let positionInput = popupContainerTitle.querySelector('.popup__form-field_field_position');
-let nameTitle = document.querySelector('.profile__title');
-let positionText = document.querySelector('.profile__subtitle');
+const popupTitle = document.querySelector('.popup_prefix_title');
+const closeButtonTitle = popupTitle.querySelector('.popup__close');
+const popupContainerTitle = popupTitle.querySelector('.popup__container');
+const popupForm = popupTitle.querySelector('.popup__form');
+const nameInput = popupContainerTitle.querySelector('.popup__form-field_field_name');
+const positionInput = popupContainerTitle.querySelector('.popup__form-field_field_position');
+const nameTitle = document.querySelector('.profile__title');
+const positionText = document.querySelector('.profile__subtitle');
 
 // popup-card
-let popupCard = document.querySelector('.popup_prefix_card');
-let popupCardContainer = popupCard.querySelector('.popup__container');
-let popupCardCloseButton = popupCard.querySelector('.popup__close');
-let popupCardForm = popupCard.querySelector('.popup__form');
-let popupCardName = popupCard.querySelector('.popup__form-field_field_name');
-let popupCardUrl = popupCard.querySelector('.popup__form-field_field_url');
+const popupCard = document.querySelector('.popup_prefix_card');
+const popupCardContainer = popupCard.querySelector('.popup__container');
+const popupCardCloseButton = popupCard.querySelector('.popup__close');
+const popupCardForm = popupCard.querySelector('.popup__form');
+const popupCardName = popupCard.querySelector('.popup__form-field_field_name');
+const popupCardUrl = popupCard.querySelector('.popup__form-field_field_url');
 
 // popup-image
-let popupImage = document.querySelector('.popup_prefix_image');
-let closeButtonImage = popupImage.querySelector('.images-full__close');
-let popupImageContainer = popupImage.querySelector('.images-full__content');
-let popupImageImg = popupImage.querySelector('.images-full__img');
-let popupImageText = popupImage.querySelector('.images-full__text');
+const popupImage = document.querySelector('.popup_prefix_image');
+const closeButtonImage = popupImage.querySelector('.images-full__close');
+const popupImageContainer = popupImage.querySelector('.images-full__content');
+const popupImageImg = popupImage.querySelector('.images-full__img');
+const popupImageText = popupImage.querySelector('.images-full__text');
 
 
 const template = document.querySelector('.item-template').content;

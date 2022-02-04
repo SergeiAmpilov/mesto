@@ -66,10 +66,10 @@ function render() {
 
 function renderItem(name, link) {
 
-    let newItemElement = template.cloneNode(true);
+    const newItemElement = template.cloneNode(true);
     newItemElement.querySelector('.element__title').textContent = name;
 
-    let imgElement = newItemElement.querySelector('.element__image');
+    const imgElement = newItemElement.querySelector('.element__image');
     imgElement.alt = name;
     imgElement.src = link;
 

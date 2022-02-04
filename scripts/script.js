@@ -96,7 +96,6 @@ const removeClickHandler = event => {
     event.target.closest('.element').remove();
 }
 
-////
 const closeImgPopupHandlet = evt => {
     closePopup(popupImage);
 };
@@ -109,15 +108,7 @@ const openImgkHandler = event => {
     openPopup(popupImage);
 }
 
-closeButtonImage.addEventListener('click', closeImgPopupHandlet);
-popupImage.addEventListener('click', closeImgPopupHandlet);
-popupImageContainer.addEventListener('click', e => e.stopPropagation());
-
-
-//////
-
 function openPopupTitle() {
-    
     nameInput.value = nameTitle.textContent.trim();
     positionInput.value = positionText.textContent.trim();
 
@@ -132,6 +123,19 @@ function submitProfileForm(event) {
 
     closePopup(popupTitle);
 }
+
+function closePopupCard() {
+    closePopup(popupCard);
+
+    // очистим поля
+    popupCardName.value = '';
+    popupCardUrl.value = '';
+}
+
+
+closeButtonImage.addEventListener('click', closeImgPopupHandlet);
+popupImage.addEventListener('click', closeImgPopupHandlet);
+popupImageContainer.addEventListener('click', e => e.stopPropagation());
 
 openEditorButton.addEventListener('click', function (event) {
     openPopupTitle();
@@ -152,15 +156,6 @@ popupTitle.addEventListener('click', function (event) {
 popupContainerTitle.addEventListener('click', function (event) {
     event.stopPropagation();
 });
-
-// events for popup-card
-function closePopupCard() {
-    closePopup(popupCard);
-
-    // очистим поля
-    popupCardName.value = '';
-    popupCardUrl.value = '';
-}
 
 openCardPopupButton.addEventListener('click', function (event) {
     openPopup(popupCard);

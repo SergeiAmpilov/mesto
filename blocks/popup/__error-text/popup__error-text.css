@@ -1,0 +1,6 @@
+.popup__error-text {
+    font-size: 0.75rem;
+    line-height: 1.25;
+    color: #F00;
+    visibility: hidden;
+}

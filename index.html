@@ -40,12 +40,15 @@
             <form class="popup__form" name="popup-form-profile" novalidate>
                 <label>
                     <input type="text" name="name" placeholder="Имя" class="popup__form-field popup__form-field_field_name" required 
-                    minlength="2" maxlength="20">
-                    <span class="popup__error-text popup__error-text_visible">Сообщение об ошибке</span>
+                    minlength="2" maxlength="20" id="name-input">
+                    <span class="popup__error-text popup__error-text_visible name-input-error">Сообщение об ошибке</span>
                 </label>
                 <label>
-                    <input type="text" name="position" placeholder="Должность" class="popup__form-field popup__form-field_field_position" required minlength="2" maxlength="200">
-                    <span class="popup__error-text">Сообщение об ошибке</span>
+                    <input type="text" name="position" placeholder="Должность"
+                        class="popup__form-field popup__form-field_field_position" required
+                        minlength="2" maxlength="200"
+                        id="position-input">
+                    <span class="popup__error-text position-input-error">Сообщение об ошибке</span>
                 </label>
                 <button type="submit" class="popup__button-submit">Сохранить</button>
             </form>

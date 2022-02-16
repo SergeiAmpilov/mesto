@@ -174,11 +174,25 @@ const setEventListeners = (formElement) => {
     inputList.forEach(inputElement => {
         inputElement.addEventListener('input', () => {
             checkInputValidity(formElement, inputElement);
+            toggleButtonState(inputList, buttonElement);
         })
     });
-    
+
+    toggleButtonState(inputList, buttonElement); // инициация состояния кнопки
 }
 
+/* проверка всех полей на наличие хотя бы одной ошибки */
+const hasInvalidInput = (inputList) => {
+    return inputList.some( inputListElement => !inputListElement.validity.valid);
+}
+
+const toggleButtonState = (inputList, buttonElement) => {
+    if (hasInvalidInput(inputList)) {
+      buttonElement.classList.add('popup__button-submit_inactive');
+    } else {
+      buttonElement.classList.remove('popup__button-submit_inactive');
+    }
+  }
 
 enableValidation();
 /* -- валидация - */

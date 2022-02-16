@@ -32,6 +32,7 @@
 @import url(../blocks/popup/__form-field/_type/popup__form-field_type_error.css);
 @import url(../blocks/popup/__error-text/popup__error-text.css);
 @import url(../blocks/popup/__error-text/popup__error-text_visible.css);
+@import url(../blocks/popup/__button-submit/popup__button-submit_inactive.css);
 @import url(../blocks/images-full/__img/images-full__img.css);
 @import url(../blocks/images-full/__content/images-full__content.css);
 @import url(../blocks/images-full/__close/images-full__close.css);

@@ -41,7 +41,7 @@
                 <label>
                     <input type="text" name="name" placeholder="Имя" class="popup__form-field popup__form-field_field_name" required 
                     minlength="2" maxlength="20" id="name-input">
-                    <span class="popup__error-text popup__error-text_visible name-input-error">Сообщение об ошибке</span>
+                    <span class="popup__error-text name-input-error">Сообщение об ошибке</span>
                 </label>
                 <label>
                     <input type="text" name="position" placeholder="Должность"
@@ -58,9 +58,15 @@
         <div class="popup__container">
             <button class="popup__close" type="button" title="Закрыть"></button>
             <h3 class="popup__title">Новое место</h3>
-            <form class="popup__form" name="popup-form-card">
-                <input type="text" name="name" placeholder="Название" class="popup__form-field popup__form-field_field_name" required>
-                <input type="url" name="url" placeholder="Ссылка на картинку" class="popup__form-field popup__form-field_field_url" required>
+            <form class="popup__form" name="popup-form-card" novalidate>
+                <label for="">
+                    <input type="text" name="name" id="place-input" placeholder="Название" class="popup__form-field popup__form-field_field_name" required>
+                    <span class="popup__error-text place-input-error">Сообщение об ошибке</span>
+                </label>
+                <label for="">
+                    <input type="url" name="url" id="url-input" placeholder="Ссылка на картинку" class="popup__form-field popup__form-field_field_url" required>
+                    <span class="popup__error-text url-input-error">Сообщение об ошибке</span>
+                </label>
                 <button type="submit" class="popup__button-submit">Создать</button>
             </form>
         </div>

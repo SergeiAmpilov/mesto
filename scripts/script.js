@@ -167,15 +167,19 @@ const enableValidation = () => {
     });
 };
 
-const setEventListeners = (formElement) => {
+const setEventListeners = (formElement, onlySetState = false) => {
     const buttonElement = formElement.querySelector('.popup__button-submit');
     const inputList = Array.from(formElement.querySelectorAll('.popup__form-field'));
 
     inputList.forEach(inputElement => {
-        inputElement.addEventListener('input', () => {
+        if (onlySetState) {
             checkInputValidity(formElement, inputElement);
-            toggleButtonState(inputList, buttonElement);
-        })
+        } else {
+            inputElement.addEventListener('input', () => {
+                checkInputValidity(formElement, inputElement);
+                toggleButtonState(inputList, buttonElement);
+            });
+        }
     });
 
     toggleButtonState(inputList, buttonElement); // инициация состояния кнопки
@@ -192,9 +196,21 @@ const toggleButtonState = (inputList, buttonElement) => {
     } else {
       buttonElement.classList.remove('popup__button-submit_inactive');
     }
-  }
+}
 
-enableValidation();
+// устанавливаем первичное состояние формы при открытии попапа
+// const setInitialState = formElement => {
+//     const buttonElement = formElement.querySelector('.popup__button-submit');
+//     const inputList = Array.from(formElement.querySelectorAll('.popup__form-field'));
+
+//     inputList.forEach(inputElement => {
+//         checkInputValidity(formElement, inputElement);
+//     });
+
+//     toggleButtonState(inputList, buttonElement);
+// }
+
+
 /* -- валидация - */
 
 closeButtonImage.addEventListener('click', closeImgPopupHandlet);
@@ -246,6 +262,7 @@ popupCardForm.addEventListener('submit', function (event) {
 
 function openPopup(element) {
     element.classList.add('popup_visible');
+    setEventListeners(element, true);
 }
 
 function closePopup(element) {
@@ -254,3 +271,4 @@ function closePopup(element) {
 }
 
 render();
+enableValidation();

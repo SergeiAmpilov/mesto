@@ -118,6 +118,10 @@ function openPopupTitle() {
 function submitProfileForm(event) {
     event.preventDefault();
 
+    if (isFormError(event.target)) {
+        return ;
+    }
+
     nameTitle.textContent = nameInput.value.trim();
     positionText.textContent = positionInput.value.trim();
 
@@ -198,6 +202,11 @@ const toggleButtonState = (inputList, buttonElement) => {
     }
 }
 
+const isFormError = formElement => {
+    const inputList = Array.from(formElement.querySelectorAll('.popup__form-field'));
+    return hasInvalidInput(inputList);
+}
+
 // устанавливаем первичное состояние формы при открытии попапа
 // const setInitialState = formElement => {
 //     const buttonElement = formElement.querySelector('.popup__button-submit');
@@ -255,6 +264,11 @@ popupCardContainer.addEventListener('click', function (event) {
 
 popupCardForm.addEventListener('submit', function (event) {
     event.preventDefault();
+
+    if (isFormError(event.target)) {
+        return ;
+    }
+    
     const newCard = renderItem(popupCardName.value.trim(), popupCardUrl.value.trim());
     renderCard(newCard, itemContainer);
     closePopupCard();

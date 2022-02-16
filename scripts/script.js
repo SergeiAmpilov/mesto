@@ -86,14 +86,14 @@ function openPopupTitle() {
     nameInput.value = nameTitle.textContent.trim();
     positionInput.value = positionText.textContent.trim();
 
-    setEventListeners(popupTitle, true);
+    setEventListeners(popupTitle, true, configObj);
     openPopup(popupTitle);
 }
 
 function submitProfileForm(event) {
     event.preventDefault();
 
-    if (isFormError(event.target)) {
+    if (isFormError(event.target, configObj)) {
         return ;
     }
 
@@ -138,7 +138,7 @@ popupContainerTitle.addEventListener('click', function (event) {
 });
 
 openCardPopupButton.addEventListener('click', function (event) {
-    setEventListeners(popupCard, true);
+    setEventListeners(popupCard, true, configObj);
     openPopup(popupCard);
 });
 
@@ -157,7 +157,7 @@ popupCardContainer.addEventListener('click', function (event) {
 popupCardForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    if (isFormError(event.target)) {
+    if (isFormError(event.target, configObj)) {
         return ;
     }
     

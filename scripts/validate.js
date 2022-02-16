@@ -1,54 +1,55 @@
 /* Валидация форм */
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, configObj) => {
     if (!inputElement.validity.valid) {
-        showInputError(formElement, inputElement, inputElement.validationMessage);
+        showInputError(formElement, inputElement, inputElement.validationMessage, configObj);
     } else {
-        hideInputError(formElement, inputElement);
+        hideInputError(formElement, inputElement, configObj);
     }
 };
 
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, configObj) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add('popup__form-field_type_error');
+    inputElement.classList.add(configObj.inputErrorClass); 
     errorElement.textContent = errorMessage;
-    errorElement.classList.add('popup__error-text_visible');
+    errorElement.classList.add(configObj.errorClass);
 };
   
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, configObj) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove('popup__form-field_type_error');
-    errorElement.classList.remove('popup__error-text_visible');
+    inputElement.classList.remove(configObj.inputErrorClass);
+    errorElement.classList.remove(configObj.errorClass);  
     errorElement.textContent = '';
 };
 
-const enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll('.popup__form'));
+const enableValidation = (configObj) => {
+    const formList = Array.from(document.querySelectorAll(configObj.formSelector));
+
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', function (evt) {
             evt.preventDefault();
         });
 
-        setEventListeners(formElement);
+        setEventListeners(formElement, false, configObj);
     });
 };
 
-const setEventListeners = (formElement, onlySetState = false) => {
-    const buttonElement = formElement.querySelector('.popup__button-submit');
-    const inputList = Array.from(formElement.querySelectorAll('.popup__form-field'));
-
+const setEventListeners = (formElement, onlySetState = false, configObj = {}) => {
+    const buttonElement = formElement.querySelector(configObj.submitButtonSelector);
+    const inputList = Array.from(formElement.querySelectorAll(configObj.inputSelector));
+    
     inputList.forEach(inputElement => {
         if (onlySetState) {
-            checkInputValidity(formElement, inputElement);
+            checkInputValidity(formElement, inputElement, configObj);
         } else {
             inputElement.addEventListener('input', () => {
-                checkInputValidity(formElement, inputElement);
-                toggleButtonState(inputList, buttonElement);
+                checkInputValidity(formElement, inputElement, configObj);
+                toggleButtonState(inputList, buttonElement, configObj);
             });
         }
     });
 
-    toggleButtonState(inputList, buttonElement); // инициация состояния кнопки
+    toggleButtonState(inputList, buttonElement, configObj); // инициация состояния кнопки
 }
 
 /* проверка всех полей на наличие хотя бы одной ошибки */
@@ -56,16 +57,16 @@ const hasInvalidInput = (inputList) => {
     return inputList.some( inputListElement => !inputListElement.validity.valid);
 }
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, configObj) => {
     if (hasInvalidInput(inputList)) {
-      buttonElement.classList.add('popup__button-submit_inactive');
+      buttonElement.classList.add(configObj.inactiveButtonClass); 
     } else {
-      buttonElement.classList.remove('popup__button-submit_inactive');
+      buttonElement.classList.remove(configObj.inactiveButtonClass);
     }
 }
 
-const isFormError = formElement => {
-    const inputList = Array.from(formElement.querySelectorAll('.popup__form-field'));
+const isFormError = (formElement, configObj) => {
+    const inputList = Array.from(formElement.querySelectorAll(configObj.inputSelector));
     return hasInvalidInput(inputList);
 }
 

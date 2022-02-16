@@ -27,9 +27,9 @@ const initialCards = [
 
   const configObj = {
     formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
+    inputSelector: '.popup__form-field',
+    submitButtonSelector: '.popup__button-submit',
+    inactiveButtonClass: 'popup__button-submit_inactive',
+    inputErrorClass: 'popup__form-field_type_error',
+    errorClass: 'popup__error-text_visible'
   };

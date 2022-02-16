@@ -30,32 +30,6 @@ const popupImageText = popupImage.querySelector('.images-full__text');
 
 const template = document.querySelector('.item-template').content;
 const itemContainer = document.querySelector('.elements');
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
 
 function render() {
     for (let i = 0; i < initialCards.length; i++) {
@@ -96,7 +70,7 @@ const removeClickHandler = event => {
     event.target.closest('.element').remove();
 }
 
-const closeImgPopupHandlet = evt => {
+const closeImgPopupHandler = evt => {
     closePopup(popupImage);
 };
 
@@ -112,6 +86,7 @@ function openPopupTitle() {
     nameInput.value = nameTitle.textContent.trim();
     positionInput.value = positionText.textContent.trim();
 
+    setEventListeners(popupTitle, true);
     openPopup(popupTitle);
 }
 
@@ -207,23 +182,10 @@ const isFormError = formElement => {
     return hasInvalidInput(inputList);
 }
 
-// устанавливаем первичное состояние формы при открытии попапа
-// const setInitialState = formElement => {
-//     const buttonElement = formElement.querySelector('.popup__button-submit');
-//     const inputList = Array.from(formElement.querySelectorAll('.popup__form-field'));
-
-//     inputList.forEach(inputElement => {
-//         checkInputValidity(formElement, inputElement);
-//     });
-
-//     toggleButtonState(inputList, buttonElement);
-// }
-
-
 /* -- валидация - */
 
-closeButtonImage.addEventListener('click', closeImgPopupHandlet);
-popupImage.addEventListener('click', closeImgPopupHandlet);
+closeButtonImage.addEventListener('click', closeImgPopupHandler);
+popupImage.addEventListener('click', closeImgPopupHandler);
 popupImageContainer.addEventListener('click', e => e.stopPropagation());
 
 openEditorButton.addEventListener('click', function (event) {
@@ -247,6 +209,7 @@ popupContainerTitle.addEventListener('click', function (event) {
 });
 
 openCardPopupButton.addEventListener('click', function (event) {
+    setEventListeners(popupCard, true);
     openPopup(popupCard);
 });
 
@@ -276,13 +239,27 @@ popupCardForm.addEventListener('submit', function (event) {
 
 function openPopup(element) {
     element.classList.add('popup_visible');
-    setEventListeners(element, true);
 }
 
 function closePopup(element) {
     element.classList.remove('popup_visible');
 
 }
+
+// отслеживания нажатия на ESC ++
+function escHandler(evt) {
+
+    if (evt.key !== 'Escape') {
+        return ;
+    }
+    const popupOpened = document.querySelector('.popup.popup_visible');
+
+    if (popupOpened) {
+        closePopup(popupOpened);
+    }
+}
+
+document.addEventListener('keydown', escHandler);
 
 render();
 enableValidation();

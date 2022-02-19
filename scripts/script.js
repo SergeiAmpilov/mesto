@@ -57,24 +57,24 @@ function renderCard(card, wrap) {
 } 
 
 function appendEvents(element) {
-    element.querySelector('.element__like').addEventListener('click', likeClickHandler);
-    element.querySelector('.element__trash').addEventListener('click', removeClickHandler);
-    element.querySelector('.element__image').addEventListener('click', openImgkHandler);
+    element.querySelector('.element__like').addEventListener('click', handleLikeClick);
+    element.querySelector('.element__trash').addEventListener('click', handleRemoveElement);
+    element.querySelector('.element__image').addEventListener('click', handleOpenImg);
 }
 
-const likeClickHandler = event => {
+const handleLikeClick = event => {
     event.target.classList.toggle('element__like_active');
 }
 
-const removeClickHandler = event => {
+const handleRemoveElement = event => {
     event.target.closest('.element').remove();
 }
 
-const closeImgPopupHandler = evt => {
+const handleCloseImg = evt => {
     closePopup(popupImage);
 };
 
-const openImgkHandler = event => {
+const handleOpenImg = event => {
     popupImageImg.src = event.target.src;
     popupImageImg.alt = event.target.alt;
     popupImageText.innerText = event.target.alt;
@@ -113,8 +113,8 @@ function closePopupCard() {
 
 
 
-closeButtonImage.addEventListener('click', closeImgPopupHandler);
-popupImage.addEventListener('click', closeImgPopupHandler);
+closeButtonImage.addEventListener('click', handleCloseImg);
+popupImage.addEventListener('click', handleCloseImg);
 popupImageContainer.addEventListener('click', e => e.stopPropagation());
 
 openEditorButton.addEventListener('click', function (event) {

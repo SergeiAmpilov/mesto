@@ -32,10 +32,10 @@ const template = document.querySelector('.item-template').content;
 const itemContainer = document.querySelector('.elements');
 
 function render() {
-    for (let i = 0; i < initialCards.length; i++) {
-        const newCard = renderItem(initialCards[i].name, initialCards[i].link);
+    initialCards.forEach( el => {
+        const newCard = renderItem(el.name, el.link);
         renderCard(newCard, itemContainer);
-    }
+    });
 }
 
 function renderItem(name, link) {

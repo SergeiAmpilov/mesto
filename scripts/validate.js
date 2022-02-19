@@ -30,23 +30,19 @@ const enableValidation = (configObj) => {
             evt.preventDefault();
         });
 
-        setEventListeners(formElement, false, configObj);
+        setEventListeners(formElement, configObj);
     });
 };
 
-const setEventListeners = (formElement, onlySetState = false, configObj = {}) => {
+const setEventListeners = (formElement, configObj = {}) => {
     const buttonElement = formElement.querySelector(configObj.submitButtonSelector);
     const inputList = Array.from(formElement.querySelectorAll(configObj.inputSelector));
     
     inputList.forEach(inputElement => {
-        if (onlySetState) {
-            checkInputValidity(formElement, inputElement, configObj);
-        } else {
             inputElement.addEventListener('input', () => {
                 checkInputValidity(formElement, inputElement, configObj);
                 toggleButtonState(inputList, buttonElement, configObj);
             });
-        }
     });
 
     toggleButtonState(inputList, buttonElement, configObj); // инициация состояния кнопки

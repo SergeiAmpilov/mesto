@@ -86,7 +86,6 @@ function openPopupTitle() {
     nameInput.value = nameTitle.textContent.trim();
     positionInput.value = positionText.textContent.trim();
 
-    setEventListeners(popupTitle, true, configObj);
     openPopup(popupTitle);
 }
 
@@ -137,7 +136,6 @@ popupContainerTitle.addEventListener('click', function (event) {
 });
 
 openCardPopupButton.addEventListener('click', function (event) {
-    setEventListeners(popupCard, true, configObj);
     openPopup(popupCard);
 });
 

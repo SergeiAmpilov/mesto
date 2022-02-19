@@ -91,7 +91,6 @@ function openPopupTitle() {
 }
 
 function submitProfileForm(event) {
-    event.preventDefault();
 
     if (isFormError(event.target, configObj)) {
         return ;
@@ -155,7 +154,6 @@ popupCardContainer.addEventListener('click', function (event) {
 });
 
 popupCardForm.addEventListener('submit', function (event) {
-    event.preventDefault();
 
     if (isFormError(event.target, configObj)) {
         return ;
@@ -168,16 +166,17 @@ popupCardForm.addEventListener('submit', function (event) {
 
 function openPopup(element) {
     element.classList.add('popup_visible');
+    document.addEventListener('keydown', handlePressEsc);
 }
 
 function closePopup(element) {
     element.classList.remove('popup_visible');
+    document.removeEventListener('keydown', handlePressEsc);
 
 }
 
 // отслеживания нажатия на ESC ++
-function escHandler(evt) {
-
+const handlePressEsc = evt => {
     if (evt.key !== 'Escape') {
         return ;
     }
@@ -187,7 +186,5 @@ function escHandler(evt) {
         closePopup(popupOpened);
     }
 }
-
-document.addEventListener('keydown', escHandler);
 
 render();

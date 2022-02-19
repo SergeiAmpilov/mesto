@@ -103,10 +103,6 @@ function submitProfileForm(event) {
 
 function closePopupCard() {
     closePopup(popupCard);
-
-    // очистим поля
-    popupCardName.value = '';
-    popupCardUrl.value = '';
 }
 
 
@@ -160,6 +156,10 @@ popupCardForm.addEventListener('submit', function (event) {
     const newCard = renderItem(popupCardName.value.trim(), popupCardUrl.value.trim());
     renderCard(newCard, itemContainer);
     closePopupCard();
+
+    // очистим поля
+    popupCardName.value = '';
+    popupCardUrl.value = '';
 });
 
 function openPopup(element) {

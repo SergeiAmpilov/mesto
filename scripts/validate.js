@@ -76,6 +76,4 @@ const isFormError = (formElement, configObj) => {
     return hasInvalidInput(inputList);
 }
 
-/* -- валидация - */
-
 enableValidation(configObj);

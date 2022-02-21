@@ -4,7 +4,6 @@ const body = document.querySelector('.page');
 
 // popup
 const popups = document.querySelectorAll('.popup');
-const buttonsClose = document.querySelectorAll('.popup__close');
 
 // popup-title
 const popupTitle = document.querySelector('.popup_prefix_title');
@@ -71,9 +70,6 @@ const handleRemoveElement = event => {
     event.target.closest('.element').remove();
 }
 
-const handleCloseImg = evt => {
-    closePopup(popupImage);
-};
 
 const handleOpenImg = event => {
     popupImageImg.src = event.target.src;
@@ -102,9 +98,6 @@ function submitProfileForm(event) {
     closePopup(popupTitle);
 }
 
-popupImage.addEventListener('click', handleCloseImg);
-popupImageContainer.addEventListener('click', e => e.stopPropagation());
-
 popups.forEach( el => {
     el.addEventListener('mousedown', (evt) => {
         if (evt.target.classList.contains('popup_visible')) {
@@ -126,21 +119,8 @@ popupTitleForm.addEventListener('submit', function (event) {
     submitProfileForm(event);
 });
 
-popupTitle.addEventListener('click', function (event) {
-    closePopup(popupTitle);
-});
-
-popupContainerTitle.addEventListener('click', function (event) {
-    event.stopPropagation();
-});
-
 openCardPopupButton.addEventListener('click', function (event) {
     openPopup(popupCard);
-});
-
-
-popupCardContainer.addEventListener('click', function (event) {
-    event.stopPropagation();
 });
 
 popupCardForm.addEventListener('submit', function (event) {

@@ -55,13 +55,21 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement, configObj) => {
     if (hasInvalidInput(inputList)) {
-      buttonElement.classList.add(configObj.inactiveButtonClass);
-      buttonElement.setAttribute("disabled", "disabled");
+        disableSubmitButton(buttonElement);
     } else {
-      buttonElement.classList.remove(configObj.inactiveButtonClass);
-      buttonElement.removeAttribute("disabled");
+        enableSubmitButton(buttonElement);
     }
 }
+
+const disableSubmitButton = (buttonElement) =>  {
+    buttonElement.classList.add(configObj.inactiveButtonClass);
+    buttonElement.setAttribute("disabled", "disabled");
+};
+
+const enableSubmitButton = (buttonElement) =>  {
+    buttonElement.classList.remove(configObj.inactiveButtonClass);
+    buttonElement.removeAttribute("disabled");
+};
 
 const isFormError = (formElement, configObj) => {
     const inputList = Array.from(formElement.querySelectorAll(configObj.inputSelector));

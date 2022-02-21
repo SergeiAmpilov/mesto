@@ -136,6 +136,8 @@ popupCardForm.addEventListener('submit', function (event) {
     // очистим поля
     popupCardName.value = '';
     popupCardUrl.value = '';
+
+    disableSubmitButton(event.target.querySelector('.popup__button-submit'));
 });
 
 function openPopup(element) {

@@ -34,13 +34,15 @@ class Card {
 
     /* пока стоит заглушка, не наполнил пока */
     _setEventListeners() {
-        element.querySelector('.element__like').addEventListener('click', (event) => {
+        this._element.querySelector('.element__like').addEventListener('click', (event) => {
             this._handleLikeClick(event);
         });
-        element.querySelector('.element__trash').addEventListener('click', (event) => {
+        this._element.querySelector('.element__trash').addEventListener('click', (event) => {
             this._handleRemoveElement(event);
         });
-        element.querySelector('.element__image').addEventListener('click', handleOpenImg);
+        this._element.querySelector('.element__image').addEventListener('click', (event) => {
+            this._handleOpenImg(event);
+        });
     }
 
     generateCard() {

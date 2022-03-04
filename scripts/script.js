@@ -1,3 +1,5 @@
+import { Card } from './card.js';
+
 export { Card } from './card.js';
 
 const openEditorButton = document.querySelector('.profile__pen');
@@ -35,11 +37,21 @@ const itemContainer = document.querySelector('.elements');
 
 function render() {
     initialCards.forEach( el => {
+
+        const newCard = new Card({
+            title: el.name,
+            img: el.link
+        }, '.item-template').generateCard();
+
+        itemContainer.prepend(newCard);
+        /*
         const newCard = renderItem(el.name, el.link);
         renderCard(newCard, itemContainer);
+        */
     });
 }
 
+/*
 function renderItem(name, link) {
 
     const newItemElement = template.cloneNode(true);
@@ -57,7 +69,7 @@ function renderItem(name, link) {
 function renderCard(card, wrap) {
     wrap.prepend(card);
 } 
-
+*/
 function appendEvents(element) {
     element.querySelector('.element__like').addEventListener('click', handleLikeClick);
     element.querySelector('.element__trash').addEventListener('click', handleRemoveElement);

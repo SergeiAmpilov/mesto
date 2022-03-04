@@ -1,3 +1,5 @@
+export { Card } from './card.js';
+
 const openEditorButton = document.querySelector('.profile__pen');
 const openCardPopupButton = document.querySelector('.profile__add-button');
 const body = document.querySelector('.page');

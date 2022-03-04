@@ -3,6 +3,9 @@ class Card {
         this._cardSelector = templateSelector;
         this._title = data.title;
         this._img = data.img;
+
+        this._popupImg = data.popupImage;
+        this._openPopup = data.openPopup;
     }
 
     _getTemplate() {
@@ -23,16 +26,14 @@ class Card {
         event.target.closest('.element').remove();
     }
 
-    _handleOpenImg(event) {
-        /* интересный вопрос - будут ли эти  константы и функции доступны тут, если они определены в другом файле ? */
-        popupImageImg.src = this._img;
-        popupImageImg.alt = this._title;
-        popupImageText.innerText = this._title;
+    _handleOpenImg(event) {       
+        this._popupImg.querySelector('.images-full__img').src = this._img;
+        this._popupImg.querySelector('.images-full__img').alt = this._title;
+        this._popupImg.querySelector('.images-full__img').innerText = this._title;
 
-        openPopup(popupImage);
+        this._openPopup(this._popupImg);
     }
 
-    /* пока стоит заглушка, не наполнил пока */
     _setEventListeners() {
         this._element.querySelector('.element__like').addEventListener('click', (event) => {
             this._handleLikeClick(event);

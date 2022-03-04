@@ -40,7 +40,9 @@ function render() {
 
         const newCard = new Card({
             title: el.name,
-            img: el.link
+            img: el.link,
+            popupImage,
+            openPopup,
         }, '.item-template').generateCard();
 
         itemContainer.prepend(newCard);

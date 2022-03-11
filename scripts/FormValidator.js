@@ -20,11 +20,11 @@ class FormValidator {
         this._inputList.forEach( (inputElement) => {
                 inputElement.addEventListener('input', () => {
                     this._checkInputValidity(inputElement);
-                    this._toggleButtonState();
+                    this.toggleButtonState();
                 });
         });
     
-        this._toggleButtonState();
+        this.toggleButtonState();
     }
 
     _checkInputValidity(inputElement) {
@@ -53,7 +53,7 @@ class FormValidator {
 
     }
 
-    _toggleButtonState() {
+    toggleButtonState() {
         if (this._hasInvalidInput()) {
             this._disableSubmitButton();
         } else {

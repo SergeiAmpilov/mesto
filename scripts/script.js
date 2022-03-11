@@ -1,6 +1,6 @@
-import { Card } from './card.js';
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 
-export { Card } from './card.js';
 
 const openEditorButton = document.querySelector('.profile__pen');
 const openCardPopupButton = document.querySelector('.profile__add-button');
@@ -45,55 +45,13 @@ function render() {
             openPopup,
         }, '.item-template').generateCard();
 
-        itemContainer.prepend(newCard);
-        /*
-        const newCard = renderItem(el.name, el.link);
         renderCard(newCard, itemContainer);
-        */
     });
-}
-
-/*
-function renderItem(name, link) {
-
-    const newItemElement = template.cloneNode(true);
-    newItemElement.querySelector('.element__title').textContent = name;
-
-    const imgElement = newItemElement.querySelector('.element__image');
-    imgElement.alt = name;
-    imgElement.src = link;
-
-    appendEvents(newItemElement);
-
-    return newItemElement;
 }
 
 function renderCard(card, wrap) {
     wrap.prepend(card);
 } 
-*/
-function appendEvents(element) {
-    element.querySelector('.element__like').addEventListener('click', handleLikeClick);
-    element.querySelector('.element__trash').addEventListener('click', handleRemoveElement);
-    element.querySelector('.element__image').addEventListener('click', handleOpenImg);
-}
-
-const handleLikeClick = event => {
-    event.target.classList.toggle('element__like_active');
-}
-
-const handleRemoveElement = event => {
-    event.target.closest('.element').remove();
-}
-
-
-const handleOpenImg = event => {
-    popupImageImg.src = event.target.src;
-    popupImageImg.alt = event.target.alt;
-    popupImageText.innerText = event.target.alt;
-
-    openPopup(popupImage);
-}
 
 function openPopupTitle() {
     nameInput.value = nameTitle.textContent.trim();
@@ -103,10 +61,6 @@ function openPopupTitle() {
 }
 
 function submitProfileForm(event) {
-
-    if (isFormError(event.target, configObj)) {
-        return ;
-    }
 
     nameTitle.textContent = nameInput.value.trim();
     positionText.textContent = positionInput.value.trim();
@@ -141,11 +95,13 @@ openCardPopupButton.addEventListener('click', function (event) {
 
 popupCardForm.addEventListener('submit', function (event) {
 
-    if (isFormError(event.target, configObj)) {
-        return ;
-    }
+    const newCard = new Card({
+        title: popupCardName.value.trim(),
+        img: popupCardUrl.value.trim(),
+        popupImage,
+        openPopup,
+    }, '.item-template').generateCard();
     
-    const newCard = renderItem(popupCardName.value.trim(), popupCardUrl.value.trim());
     renderCard(newCard, itemContainer);
     closePopup(popupCard);
 
@@ -153,7 +109,7 @@ popupCardForm.addEventListener('submit', function (event) {
     popupCardName.value = '';
     popupCardUrl.value = '';
 
-    disableSubmitButton(event.target.querySelector('.popup__button-submit'));
+    new FormValidator(configObj, this)._disableSubmitButton(event.target.querySelector('.popup__button-submit'));
 });
 
 function openPopup(element) {
@@ -180,3 +136,10 @@ const handlePressEsc = evt => {
 }
 
 render();
+
+/* validation */
+
+Array.from(document.querySelectorAll(configObj.formSelector))
+        .forEach( (formElement) => {
+            const validator = new FormValidator(configObj, formElement).enableValidation();
+        });

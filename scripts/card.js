@@ -29,7 +29,7 @@ class Card {
     _handleOpenImg(event) {       
         this._popupImg.querySelector('.images-full__img').src = this._img;
         this._popupImg.querySelector('.images-full__img').alt = this._title;
-        this._popupImg.querySelector('.images-full__img').innerText = this._title;
+        this._popupImg.querySelector('.images-full__text').innerText = this._title;
 
         this._openPopup(this._popupImg);
     }

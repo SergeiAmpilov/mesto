@@ -19,11 +19,11 @@ class Card {
     }
 
     _handleLikeClick(event) {
-        event.target.classList.toggle('element__like_active');
+        this._elementLike.classList.toggle('element__like_active');
     }
 
     _handleRemoveElement(event) {
-        event.target.closest('.element').remove();
+        this._element.remove();
     }
 
     _handleOpenImg(event) {       
@@ -35,10 +35,13 @@ class Card {
     }
 
     _setEventListeners() {
-        this._element.querySelector('.element__like').addEventListener('click', (event) => {
+        this._elementLike = this._element.querySelector('.element__like');
+        this._elementTrash = this._element.querySelector('.element__trash');
+
+        this._elementLike.addEventListener('click', (event) => {
             this._handleLikeClick(event);
         });
-        this._element.querySelector('.element__trash').addEventListener('click', (event) => {
+        this._elementTrash.addEventListener('click', (event) => {
             this._handleRemoveElement(event);
         });
         this._element.querySelector('.element__image').addEventListener('click', (event) => {

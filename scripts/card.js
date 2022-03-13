@@ -5,6 +5,7 @@ class Card {
         this._img = data.img;
 
         this._popupImg = data.popupImage;
+        this._popupImgPic = this._popupImg.querySelector('.images-full__img');
         this._openPopup = data.openPopup;
     }
 
@@ -24,11 +25,12 @@ class Card {
 
     _handleRemoveElement(event) {
         this._element.remove();
+        this._element = null;
     }
 
     _handleOpenImg(event) {       
-        this._popupImg.querySelector('.images-full__img').src = this._img;
-        this._popupImg.querySelector('.images-full__img').alt = this._title;
+        this._popupImgPic.src = this._img;
+        this._popupImgPic.alt = this._title;
         this._popupImg.querySelector('.images-full__text').innerText = this._title;
 
         this._openPopup(this._popupImg);
@@ -37,6 +39,7 @@ class Card {
     _setEventListeners() {
         this._elementLike = this._element.querySelector('.element__like');
         this._elementTrash = this._element.querySelector('.element__trash');
+        this._elementImage = this._element.querySelector('.element__image');
 
         this._elementLike.addEventListener('click', (event) => {
             this._handleLikeClick(event);
@@ -44,7 +47,7 @@ class Card {
         this._elementTrash.addEventListener('click', (event) => {
             this._handleRemoveElement(event);
         });
-        this._element.querySelector('.element__image').addEventListener('click', (event) => {
+        this._elementImage.addEventListener('click', (event) => {
             this._handleOpenImg(event);
         });
     }
@@ -54,8 +57,8 @@ class Card {
         this._setEventListeners();
         
         this._element.querySelector('.element__title').textContent = this._title;
-        this._element.querySelector('.element__image').src = this._img;
-        this._element.querySelector('.element__image').alt = this._title;
+        this._elementImage.src = this._img;
+        this._elementImage.alt = this._title;
     
         return this._element;
     }

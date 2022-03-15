@@ -2,7 +2,7 @@
     width: 100%;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    margin: 0 0 30px 0;
+    /* margin: 0 0 30px 0; */
     padding: 0 0 13px 0;
     color: black;
     font-size: 0.87rem;
@@ -11,7 +11,7 @@
 }
 
 .popup__form-field.popup__form-field_type_error {
-    margin: 0 0 5px 0;
+    /* margin: 0 0 5px 0; */
 }
 
 /* Remove outline on the forms */

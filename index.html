@@ -38,12 +38,12 @@
             <button class="popup__close" type="button" title="Закрыть"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
             <form class="popup__form" name="popup-form-profile" novalidate>
-                <label>
+                <label class="popup__form-group">
                     <input type="text" name="name" placeholder="Имя" class="popup__form-field popup__form-field_field_name" required 
                     minlength="2" maxlength="40" id="name-input">
                     <span class="popup__error-text name-input-error">Сообщение об ошибке</span>
                 </label>
-                <label>
+                <label class="popup__form-group">
                     <input type="text" name="position" placeholder="Должность"
                         class="popup__form-field popup__form-field_field_position" required
                         minlength="2" maxlength="200"
@@ -59,11 +59,11 @@
             <button class="popup__close" type="button" title="Закрыть"></button>
             <h3 class="popup__title">Новое место</h3>
             <form class="popup__form" name="popup-form-card" novalidate>
-                <label for="">
+                <label for="" class="popup__form-group">
                     <input type="text" name="name" id="place-input" placeholder="Название" class="popup__form-field popup__form-field_field_name"  minlength="2" maxlength="30" required>
                     <span class="popup__error-text place-input-error">Сообщение об ошибке</span>
                 </label>
-                <label for="">
+                <label for="" class="popup__form-group">
                     <input type="url" name="url" id="url-input" placeholder="Ссылка на картинку" class="popup__form-field popup__form-field_field_url" required>
                     <span class="popup__error-text url-input-error">Сообщение об ошибке</span>
                 </label>

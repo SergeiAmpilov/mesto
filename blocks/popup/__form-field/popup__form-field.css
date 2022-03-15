@@ -10,9 +10,6 @@
     line-height: 1.2;
 }
 
-.popup__form-field.popup__form-field_type_error {
-    /* margin: 0 0 5px 0; */
-}
 
 /* Remove outline on the forms */
 .popup__form-field:active, :hover, :focus {

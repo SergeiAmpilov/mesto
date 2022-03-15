@@ -1,4 +1,5 @@
 class Card {
+    
     constructor(data, templateSelector) {
         this._cardSelector = templateSelector;
         this._title = data.title;

@@ -4,16 +4,18 @@ import { configObj } from './data.js' ;
 class PopupWithForm extends Popup {
 
     constructor(popupSelector, formCallbackSubmit, formElement) {
-        this._formCallbackSubmit = formCallbackSubmit;
-        this._formElement = formElement;
-        this._inputList = this._formElement.querySelectorAll(configObj.inputSelector);
+        
 
         super(popupSelector);
+
+        this._formCallbackSubmit = formCallbackSubmit;
+        this._formElement = this._popupElement.querySelector(configObj.formSelector);
+        this._inputList = this._formElement.querySelectorAll(configObj.inputSelector);
     }
 
-    /* пока не понял, где это использовать */
     _getInputValues() {
-        this._inputValues =  Array.from(this._inputList).map(e => e.value);
+        this._inputValues = {};
+        this._inputList.forEach( el => this._inputValues[el.name] = el.value );
 
         return this._inputValues;
     }
@@ -21,15 +23,15 @@ class PopupWithForm extends Popup {
     setEventListeners() {
         this._formElement.addEventListener('submit', this._formCallbackSubmit);
         super.setEventListeners();
+
+        return this;
     }
 
     close() {
 
-        this._inputList.forEach( el => el.value = '');
+        this._inputList.forEach( el => el.value = ''); /* считаю что это неправильно - очищать форму ввода при закрытии */
         super.close();
     }
-
-
 
 }
 

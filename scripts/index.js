@@ -12,7 +12,17 @@ const buttonCardOpen = document.querySelector('.profile__add-button');
 
 // popup-new
 const popupTitleElement = (new Popup('.popup_prefix_title')).setEventListeners();
-const popupCardElement = (new Popup('.popup_prefix_card')).setEventListeners();
+const popupCardElement = (new PopupWithForm('.popup_prefix_card', () => {
+    const inputValues = popupCardElement._getInputValues();
+    // console.log(inputValues, inputValues.name, inputValues.url);
+
+    const newCard = createCard(inputValues.name.trim(), inputValues.url.trim());    
+    cardListSection.addItem(newCard);
+
+    popupCardElement.close();
+    validatorCard.toggleButtonState();
+
+})).setEventListeners();
 const popupImageElement = (new PopupWithImage('.popup_prefix_image')).setEventListeners();
 
 
@@ -29,8 +39,6 @@ const positionText = document.querySelector('.profile__subtitle');
 const popupCard = document.querySelector('.popup_prefix_card');
 
 const popupCardForm = popupCard.querySelector('.popup__form');
-const popupCardName = popupCard.querySelector('.popup__form-field_field_name');
-const popupCardUrl = popupCard.querySelector('.popup__form-field_field_url');
 
 const cardListSection = new Section({
     items: initialCards,
@@ -65,21 +73,7 @@ popupTitleForm.addEventListener('submit', function (event) {
 });
 
 buttonCardOpen.addEventListener('click', function (event) {
-    openPopup(popupCard);
-});
-
-popupCardForm.addEventListener('submit', function (event) {
-
-    const newCard = createCard(popupCardName.value.trim(), popupCardUrl.value.trim());
-    
-    cardListSection.addItem(newCard);
-    closePopup(popupCard);
-
-    // очистим поля
-    popupCardName.value = '';
-    popupCardUrl.value = '';
-
-    validatorCard.toggleButtonState();
+    popupCardElement.open();
 });
 
 function createCard(title, img) {

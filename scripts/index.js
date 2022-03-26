@@ -2,17 +2,17 @@ import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 import { Section } from './Section.js';
 import { Popup } from './Popup.js';
-
+import { PopupWithImage } from './PopupWithImage.js';
 import { initialCards, configObj } from './data.js';
 
 
 const buttonEditor = document.querySelector('.profile__pen');
 const buttonCardOpen = document.querySelector('.profile__add-button');
 
-// popup
+// popup-new
 const popupTitleElement = (new Popup('.popup_prefix_title')).setEventListeners();
 const popupCardElement = (new Popup('.popup_prefix_card')).setEventListeners();
-const popupImageElement = (new Popup('.popup_prefix_image')).setEventListeners();
+const popupImageElement = (new PopupWithImage('.popup_prefix_image')).setEventListeners();
 
 
 // popup-title
@@ -32,7 +32,7 @@ const popupCardName = popupCard.querySelector('.popup__form-field_field_name');
 const popupCardUrl = popupCard.querySelector('.popup__form-field_field_url');
 
 // popup-image
-const popupImage = document.querySelector('.popup_prefix_image');
+// const popupImage = document.querySelector('.popup_prefix_image');
 
 const cardListSection = new Section({
     items: initialCards,
@@ -81,7 +81,6 @@ popupCardForm.addEventListener('submit', function (event) {
     popupCardName.value = '';
     popupCardUrl.value = '';
 
-    // new FormValidator(configObj, this)._disableSubmitButton(event.target.querySelector('.popup__button-submit'));
     validatorCard.toggleButtonState();
 });
 
@@ -89,8 +88,9 @@ function createCard(title, img) {
     return new Card({
         title,
         img,
-        popupImage,
-        openPopup,
+        handleCardClick: () => {
+            popupImageElement.open(img, title);
+        },
     }, '.item-template').generateCard();
 }
 
@@ -116,8 +116,6 @@ const handlePressEsc = evt => {
         closePopup(popupOpened);
     }
 }
-
-// render();
 
 /* validation */
 

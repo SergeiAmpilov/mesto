@@ -5,9 +5,7 @@ class Card {
         this._title = data.title;
         this._img = data.img;
 
-        this._popupImg = data.popupImage;
-        this._popupImgPic = this._popupImg.querySelector('.images-full__img');
-        this._openPopup = data.openPopup;
+        this._handleCardClick = data.handleCardClick;
     }
 
     _getTemplate() {
@@ -29,14 +27,6 @@ class Card {
         this._element = null;
     }
 
-    _handleOpenImg(event) {       
-        this._popupImgPic.src = this._img;
-        this._popupImgPic.alt = this._title;
-        this._popupImg.querySelector('.images-full__text').innerText = this._title;
-
-        this._openPopup(this._popupImg);
-    }
-
     _setEventListeners() {
         this._elementLike = this._element.querySelector('.element__like');
         this._elementTrash = this._element.querySelector('.element__trash');
@@ -49,7 +39,7 @@ class Card {
             this._handleRemoveElement(event);
         });
         this._elementImage.addEventListener('click', (event) => {
-            this._handleOpenImg(event);
+            this._handleCardClick();
         });
     }
 

@@ -3,6 +3,7 @@ import { FormValidator } from './FormValidator.js';
 import { Section } from './Section.js';
 import { Popup } from './Popup.js';
 import { PopupWithImage } from './PopupWithImage.js';
+import { PopupWithForm } from './PopupWithForm.js';
 import { initialCards, configObj } from './data.js';
 
 
@@ -30,9 +31,6 @@ const popupCard = document.querySelector('.popup_prefix_card');
 const popupCardForm = popupCard.querySelector('.popup__form');
 const popupCardName = popupCard.querySelector('.popup__form-field_field_name');
 const popupCardUrl = popupCard.querySelector('.popup__form-field_field_url');
-
-// popup-image
-// const popupImage = document.querySelector('.popup_prefix_image');
 
 const cardListSection = new Section({
     items: initialCards,

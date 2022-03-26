@@ -1,6 +1,7 @@
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 import { Section } from './Section.js';
+import { Popup } from './Popup.js';
 
 import { initialCards, configObj } from './data.js';
 
@@ -9,7 +10,10 @@ const buttonEditor = document.querySelector('.profile__pen');
 const buttonCardOpen = document.querySelector('.profile__add-button');
 
 // popup
-const popups = document.querySelectorAll('.popup');
+const popupTitleElement = (new Popup('.popup_prefix_title')).setEventListeners();
+const popupCardElement = (new Popup('.popup_prefix_card')).setEventListeners();
+const popupImageElement = (new Popup('.popup_prefix_image')).setEventListeners();
+
 
 // popup-title
 const popupTitle = document.querySelector('.popup_prefix_title');
@@ -53,15 +57,6 @@ function submitProfileForm(event) {
 
     closePopup(popupTitle);
 }
-
-popups.forEach( el => {
-    el.addEventListener('mousedown', (evt) => {
-        if (evt.target.classList.contains('popup_visible') || evt.target.classList.contains('popup__close')) {
-            closePopup(el);
-        }
-    });
-});
-
 
 buttonEditor.addEventListener('click', function (event) {
     openPopupTitle();

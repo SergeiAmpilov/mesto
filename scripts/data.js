@@ -33,3 +33,5 @@ const initialCards = [
     inputErrorClass: 'popup__form-field_type_error',
     errorClass: 'popup__error-text_visible'
   };
+
+export { initialCards, configObj };

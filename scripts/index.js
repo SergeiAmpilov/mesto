@@ -2,6 +2,8 @@ import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 import { Section } from './Section.js';
 
+import { initialCards, configObj } from './data.js';
+
 
 const buttonEditor = document.querySelector('.profile__pen');
 const buttonCardOpen = document.querySelector('.profile__add-button');
@@ -28,20 +30,14 @@ const popupCardUrl = popupCard.querySelector('.popup__form-field_field_url');
 // popup-image
 const popupImage = document.querySelector('.popup_prefix_image');
 
-
-const itemContainer = document.querySelector('.elements');
-
-function render() {
-    initialCards.forEach( el => {
-
-        const newCard = createCard(el.name, el.link);
-        renderCard(newCard, itemContainer);
-    });
-}
-
-function renderCard(card, wrap) {
-    wrap.prepend(card);
-} 
+const cardListSection = new Section({
+    items: initialCards,
+    renderer: (item) => {
+        const newCard = createCard(item.name, item.link);
+        cardListSection.addItem(newCard);        
+    }
+}, '.elements');
+cardListSection.renderItems();
 
 function openPopupTitle() {
     nameInput.value = nameTitle.textContent.trim();
@@ -83,7 +79,7 @@ popupCardForm.addEventListener('submit', function (event) {
 
     const newCard = createCard(popupCardName.value.trim(), popupCardUrl.value.trim());
     
-    renderCard(newCard, itemContainer);
+    cardListSection.addItem(newCard);
     closePopup(popupCard);
 
     // очистим поля
@@ -126,7 +122,7 @@ const handlePressEsc = evt => {
     }
 }
 
-render();
+// render();
 
 /* validation */
 

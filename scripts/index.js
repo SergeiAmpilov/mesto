@@ -11,10 +11,18 @@ const buttonEditor = document.querySelector('.profile__pen');
 const buttonCardOpen = document.querySelector('.profile__add-button');
 
 // popup-new
-const popupTitleElement = (new Popup('.popup_prefix_title')).setEventListeners();
+const popupTitleElement = (new PopupWithForm('.popup_prefix_title', () => {
+    const inputValues = popupTitleElement._getInputValues();
+
+    nameTitle.textContent = inputValues.name.trim();
+    positionText.textContent = inputValues.position.trim();
+
+    popupTitleElement.close();
+    validatorTitle.toggleButtonState();
+
+})).setEventListeners();
 const popupCardElement = (new PopupWithForm('.popup_prefix_card', () => {
     const inputValues = popupCardElement._getInputValues();
-    // console.log(inputValues, inputValues.name, inputValues.url);
 
     const newCard = createCard(inputValues.name.trim(), inputValues.url.trim());    
     cardListSection.addItem(newCard);
@@ -53,24 +61,14 @@ function openPopupTitle() {
     nameInput.value = nameTitle.textContent.trim();
     positionInput.value = positionText.textContent.trim();
 
-    openPopup(popupTitle);
+    popupTitleElement.open();
 }
 
-function submitProfileForm(event) {
-
-    nameTitle.textContent = nameInput.value.trim();
-    positionText.textContent = positionInput.value.trim();
-
-    closePopup(popupTitle);
-}
 
 buttonEditor.addEventListener('click', function (event) {
     openPopupTitle();
 });
 
-popupTitleForm.addEventListener('submit', function (event) {
-    submitProfileForm(event);
-});
 
 buttonCardOpen.addEventListener('click', function (event) {
     popupCardElement.open();
@@ -86,31 +84,8 @@ function createCard(title, img) {
     }, '.item-template').generateCard();
 }
 
-function openPopup(element) {
-    element.classList.add('popup_visible');
-    document.addEventListener('keydown', handlePressEsc);
-}
-
-function closePopup(element) {
-    element.classList.remove('popup_visible');
-    document.removeEventListener('keydown', handlePressEsc);
-
-}
-
-// отслеживания нажатия на ESC ++
-const handlePressEsc = evt => {
-    if (evt.key !== 'Escape') {
-        return ;
-    }
-    const popupOpened = document.querySelector('.popup.popup_visible');
-
-    if (popupOpened) {
-        closePopup(popupOpened);
-    }
-}
 
 /* validation */
-
 const validatorTitle = new FormValidator(configObj, popupTitleForm);
 validatorTitle.enableValidation();
 

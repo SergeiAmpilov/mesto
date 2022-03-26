@@ -1,7 +1,8 @@
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 import { Section } from './Section.js';
-import { Popup } from './Popup.js';
+// import { Popup } from './Popup.js';
+import { UserInfo } from './UserInfo.js';
 import { PopupWithImage } from './PopupWithImage.js';
 import { PopupWithForm } from './PopupWithForm.js';
 import { initialCards, configObj } from './data.js';
@@ -14,8 +15,10 @@ const buttonCardOpen = document.querySelector('.profile__add-button');
 const popupTitleElement = (new PopupWithForm('.popup_prefix_title', () => {
     const inputValues = popupTitleElement._getInputValues();
 
-    nameTitle.textContent = inputValues.name.trim();
-    positionText.textContent = inputValues.position.trim();
+    userInfo.setUserInfo(inputValues);
+
+    // nameTitle.textContent = inputValues.name.trim();
+    // positionText.textContent = inputValues.position.trim();
 
     popupTitleElement.close();
     validatorTitle.toggleButtonState();
@@ -33,6 +36,12 @@ const popupCardElement = (new PopupWithForm('.popup_prefix_card', () => {
 })).setEventListeners();
 const popupImageElement = (new PopupWithImage('.popup_prefix_image')).setEventListeners();
 
+// userinfo
+const userInfo = new UserInfo({
+    nameSelector: '.profile__title',
+    positionSelector: '.profile__subtitle',
+});
+
 
 // popup-title
 const popupTitle = document.querySelector('.popup_prefix_title');
@@ -40,8 +49,7 @@ const popupContainerTitle = popupTitle.querySelector('.popup__container');
 const popupTitleForm = popupTitle.querySelector('.popup__form');
 const nameInput = popupContainerTitle.querySelector('.popup__form-field_field_name');
 const positionInput = popupContainerTitle.querySelector('.popup__form-field_field_position');
-const nameTitle = document.querySelector('.profile__title');
-const positionText = document.querySelector('.profile__subtitle');
+
 
 // popup-card
 const popupCard = document.querySelector('.popup_prefix_card');
@@ -58,8 +66,9 @@ const cardListSection = new Section({
 cardListSection.renderItems();
 
 function openPopupTitle() {
-    nameInput.value = nameTitle.textContent.trim();
-    positionInput.value = positionText.textContent.trim();
+    const info = userInfo.getUserInfo();
+    nameInput.value = info.name;
+    positionInput.value = info.position;
 
     popupTitleElement.open();
 }

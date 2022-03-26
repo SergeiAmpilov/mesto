@@ -1,7 +1,6 @@
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 import { Section } from './Section.js';
-// import { Popup } from './Popup.js';
 import { UserInfo } from './UserInfo.js';
 import { PopupWithImage } from './PopupWithImage.js';
 import { PopupWithForm } from './PopupWithForm.js';
@@ -16,9 +15,6 @@ const popupTitleElement = (new PopupWithForm('.popup_prefix_title', () => {
     const inputValues = popupTitleElement._getInputValues();
 
     userInfo.setUserInfo(inputValues);
-
-    // nameTitle.textContent = inputValues.name.trim();
-    // positionText.textContent = inputValues.position.trim();
 
     popupTitleElement.close();
     validatorTitle.toggleButtonState();
@@ -53,7 +49,6 @@ const positionInput = popupContainerTitle.querySelector('.popup__form-field_fiel
 
 // popup-card
 const popupCard = document.querySelector('.popup_prefix_card');
-
 const popupCardForm = popupCard.querySelector('.popup__form');
 
 const cardListSection = new Section({

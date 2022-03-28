@@ -5,16 +5,15 @@
     <title>Место - учебный проект 4 спринта</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="pages/index.css">
 </head>
 <body class="page">
     <header class="header">
-        <img src="images/header-logo.svg" alt="Логотип Место" class="header__logo">
+        <img src="<%=require('./images/header-logo.svg')%>" alt="Логотип Место" class="header__logo">
     </header>
     <main class="content">
         <section class="profile">
             <div class="profile__content">
-                <img src="images/custo-logo.jpg" alt="Логотип пользователя" class="profile__avatar">
+                <img src="<%=require('./images/custo-logo.jpg')%>" alt="Логотип пользователя" class="profile__avatar">
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <p class="profile__subtitle">Исследователь океана</p>
@@ -83,14 +82,13 @@
     </div>
     <template class="item-template">
         <li class="element">
-            <img src="images/karachaevsk.jpg" alt="Карачаевск" class="element__image">
+            <img src="" alt="Карачаевск" class="element__image">
             <div class="element__content">
                 <h2 class="element__title">Карачаевск</h2>
                 <button class="element__like" type="button" title="Нравится"></button>
             </div>
-            <img src="images/trash-vector.svg" alt="Удалить карточку" class="element__trash">
+            <img src="<%=require('./images/trash-vector.svg')%>" alt="Удалить карточку" class="element__trash">            
         </li>
     </template>
-    <script type="module" src="scripts/index.js"></script>
 </body>
 </html>

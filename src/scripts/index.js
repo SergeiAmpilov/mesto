@@ -6,6 +6,13 @@ import { PopupWithImage } from './PopupWithImage.js';
 import { PopupWithForm } from './PopupWithForm.js';
 import { initialCards, configObj } from './data.js';
 
+/* img import */
+import imgTrashVector from '../images/trash-vector.svg';
+import imgKustoLogo from '../images/custo-logo.jpg';
+import imgHeaderLogo from '../images/header-logo.svg';
+
+//css
+import '../pages/index.css';
 
 const buttonEditor = document.querySelector('.profile__pen');
 const buttonCardOpen = document.querySelector('.profile__add-button');

@@ -1,10 +1,10 @@
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
-import { Section } from './Section.js';
-import { UserInfo } from './UserInfo.js';
-import { PopupWithImage } from './PopupWithImage.js';
-import { PopupWithForm } from './PopupWithForm.js';
-import { initialCards, configObj } from './data.js';
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { Section } from '../components/Section.js';
+import { UserInfo } from '../components/UserInfo.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { initialCards, configObj } from '../components/data.js';
 
 /* img import */
 import imgTrashVector from '../images/trash-vector.svg';
@@ -12,7 +12,7 @@ import imgKustoLogo from '../images/custo-logo.jpg';
 import imgHeaderLogo from '../images/header-logo.svg';
 
 //css
-import '../pages/index.css';
+import './index.css';
 
 const buttonEditor = document.querySelector('.profile__pen');
 const buttonCardOpen = document.querySelector('.profile__add-button');

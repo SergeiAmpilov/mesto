@@ -18,18 +18,14 @@ const buttonEditor = document.querySelector('.profile__pen');
 const buttonCardOpen = document.querySelector('.profile__add-button');
 
 // popup-new
-const popupTitleElement = (new PopupWithForm('.popup_prefix_title', () => {
-    const inputValues = popupTitleElement._getInputValues();
-
+const popupTitleElement = (new PopupWithForm('.popup_prefix_title', (inputValues) => {
     userInfo.setUserInfo(inputValues);
 
     popupTitleElement.close();
     validatorTitle.toggleButtonState();
 
 })).setEventListeners();
-const popupCardElement = (new PopupWithForm('.popup_prefix_card', () => {
-    const inputValues = popupCardElement._getInputValues();
-
+const popupCardElement = (new PopupWithForm('.popup_prefix_card', (inputValues) => {
     const newCard = createCard(inputValues.name.trim(), inputValues.url.trim());    
     cardListSection.addItem(newCard);
 

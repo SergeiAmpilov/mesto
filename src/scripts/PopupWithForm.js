@@ -4,8 +4,6 @@ import { configObj } from './data.js' ;
 class PopupWithForm extends Popup {
 
     constructor(popupSelector, formCallbackSubmit) {
-        
-
         super(popupSelector);
 
         this._formCallbackSubmit = formCallbackSubmit;
@@ -21,7 +19,9 @@ class PopupWithForm extends Popup {
     }
 
     setEventListeners() {
-        this._formElement.addEventListener('submit', this._formCallbackSubmit);
+        this._formElement.addEventListener('submit', () => {
+            this._formCallbackSubmit( this._getInputValues() );
+        });
         super.setEventListeners();
 
         return this;

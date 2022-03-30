@@ -28,8 +28,7 @@ class PopupWithForm extends Popup {
     }
 
     close() {
-
-        this._inputList.forEach( el => el.value = ''); /* считаю что это неправильно - очищать форму ввода при закрытии */
+        this._formElement.reset();
         super.close();
     }
 

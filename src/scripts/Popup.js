@@ -2,13 +2,15 @@ class Popup {
 
     constructor(popupSelector) {
         this._popupElement = document.querySelector(popupSelector);
-        this._handleEscClose = (evt) => {
-            if (evt.key !== 'Escape') {
-                return ;
-            }
-    
-            this.close();
-        };
+        this._handleEscClose = this._handleEscCloseFunct.bind(this);
+    }
+
+    _handleEscCloseFunct(evt) {
+        if (evt.key !== 'Escape') {
+            return ;
+        }
+
+        this.close();
     }
 
     open() {

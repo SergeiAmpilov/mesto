@@ -15,16 +15,22 @@ import imgHeaderLogo from '../images/header-logo.svg';
 //css
 import './index.css';
 
+const api = new Api();
+
 const buttonEditor = document.querySelector('.profile__pen');
 const buttonCardOpen = document.querySelector('.profile__add-button');
 
 // popup-new
 const popupTitleElement = (new PopupWithForm('.popup_prefix_title', (inputValues) => {
-    userInfo.setUserInfo(inputValues);
-
-    popupTitleElement.close();
-    validatorTitle.toggleButtonState();
-
+    api.updateProfileInfo({
+        name: inputValues.name,
+        about: inputValues.position
+    }). then( (data) => {
+        // после обновления данных на сервере обновляем данные на форме
+        userInfo.setUserInfo({...inputValues, url: data.avatar});
+        popupTitleElement.close();
+        validatorTitle.toggleButtonState();
+    })
 })).setEventListeners();
 const popupCardElement = (new PopupWithForm('.popup_prefix_card', (inputValues) => {
     const newCard = createCard(inputValues.name.trim(), inputValues.url.trim());    
@@ -94,7 +100,7 @@ const validatorCard = new FormValidator(configObj, popupCardForm);
 validatorCard.enableValidation();
 
 /* == API == */
-const api = new Api();
+
 
 api.getProfileInfo()
     .then((data) => {

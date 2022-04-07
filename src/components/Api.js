@@ -4,7 +4,7 @@ export class Api {
         this._token = token;
     }
 
-    _request(path = "", body = false, method = "GET") {
+    _request(path = "", body = false, method = 'GET') {
 
         const reqObject = {
             method,
@@ -32,6 +32,18 @@ export class Api {
             .catch((err) => {
                 console.log('Произошла ошибка', err);
             })
+    }
+
+    updateProfileInfo({name, about}) {
+        return this._request('users/me', {name, about}, 'PATCH')
+        .then( (data) => {
+            // console.log(data);
+            return data;
+        })
+        .catch((err) => {
+            console.log('Произошла ошибка', err);
+        })
+
     }
 
     getCards() {

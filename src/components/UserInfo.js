@@ -1,8 +1,9 @@
 export class UserInfo {
 
-    constructor({nameSelector, positionSelector}) {
+    constructor({nameSelector, positionSelector, iconSelector}) {
         this._nameElement = document.querySelector(nameSelector);
         this._positionElement = document.querySelector(positionSelector);
+        this._iconElement = document.querySelector(iconSelector);
     }
 
     getUserInfo() {
@@ -12,8 +13,9 @@ export class UserInfo {
         };
     }
 
-    setUserInfo({name, position}) {
+    setUserInfo({name, position, url}) {
         this._nameElement.textContent = name;
         this._positionElement.textContent = position;
+        this._iconElement.src = url;
     }
 }

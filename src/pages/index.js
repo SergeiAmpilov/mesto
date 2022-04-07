@@ -40,6 +40,7 @@ const popupImageElement = (new PopupWithImage('.popup_prefix_image')).setEventLi
 const userInfo = new UserInfo({
     nameSelector: '.profile__title',
     positionSelector: '.profile__subtitle',
+    iconSelector: '.profile__avatar',
 });
 
 
@@ -106,5 +107,6 @@ apiDebug.getProfileInfo()
         userInfo.setUserInfo({
             name: data.name,
             position: data.about,
+            url: data.avatar,
         })
     })

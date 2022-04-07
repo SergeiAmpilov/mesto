@@ -26,6 +26,7 @@ export class Api {
         return this._request('users/me')
             .then((data) => {
                 console.log(data);
+                this._userId = data._id;
                 return data;
             })
             .catch((err) => {

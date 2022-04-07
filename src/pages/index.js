@@ -4,7 +4,7 @@ import { Section } from '../components/Section.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
-import { initialCards, configObj } from '../components/data.js';
+import { configObj } from '../components/data.js';
 import { Api } from '../components/Api.js';
 
 /* img import */
@@ -56,15 +56,6 @@ const positionInput = popupContainerTitle.querySelector('.popup__form-field_fiel
 const popupCard = document.querySelector('.popup_prefix_card');
 const popupCardForm = popupCard.querySelector('.popup__form');
 
-const cardListSection = new Section({
-    items: initialCards,
-    renderer: (item) => {
-        const newCard = createCard(item.name, item.link);
-        cardListSection.addItem(newCard);        
-    }
-}, '.elements');
-cardListSection.renderItems();
-
 function openPopupTitle() {
     const info = userInfo.getUserInfo();
     nameInput.value = info.name;
@@ -83,10 +74,11 @@ buttonCardOpen.addEventListener('click', function (event) {
     popupCardElement.open();
 });
 
-function createCard(title, img) {
+function createCard(title, img, id) {
     return new Card({
         title,
         img,
+        id,
         handleCardClick: () => {
             popupImageElement.open(img, title);
         },
@@ -114,4 +106,14 @@ api.getProfileInfo()
     })
 
 
-api.getCards();
+api.getCards()
+    .then( (data) => {
+        const cardListSection = new Section({
+            items: data,
+            renderer: (item) => {
+                const newCard = createCard(item.name, item.link, item._id);
+                cardListSection.addItem(newCard);        
+            }
+        }, '.elements');
+        cardListSection.renderItems();
+    })

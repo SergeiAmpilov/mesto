@@ -1,9 +1,10 @@
 class Card {
     
-    constructor(data, templateSelector) {
+    constructor(data, templateSelector, id) {
         this._cardSelector = templateSelector;
         this._title = data.title;
         this._img = data.img;
+        this._id = data.id;
 
         this._handleCardClick = data.handleCardClick;
     }
@@ -20,6 +21,7 @@ class Card {
 
     _handleLikeClick(event) {
         this._elementLike.classList.toggle('element__like_active');
+        console.log('card id', this._id);
     }
 
     _handleRemoveElement(event) {

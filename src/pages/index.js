@@ -101,8 +101,10 @@ validatorTitle.enableValidation();
 const validatorCard = new FormValidator(configObj, popupCardForm);
 validatorCard.enableValidation();
 
-const apiDebug = new Api();
-apiDebug.getProfileInfo()
+/* == API == */
+const api = new Api();
+
+api.getProfileInfo()
     .then((data) => {
         userInfo.setUserInfo({
             name: data.name,
@@ -110,3 +112,6 @@ apiDebug.getProfileInfo()
             url: data.avatar,
         })
     })
+
+
+api.getCards();

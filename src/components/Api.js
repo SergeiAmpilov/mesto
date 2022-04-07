@@ -25,8 +25,19 @@ export class Api {
     getProfileInfo() {
         return this._request('users/me')
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 this._userId = data._id;
+                return data;
+            })
+            .catch((err) => {
+                console.log('Произошла ошибка', err);
+            })
+    }
+
+    getCards() {
+        return this._request('cards')
+            .then((data) => {
+                console.log(data);
                 return data;
             })
             .catch((err) => {

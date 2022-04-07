@@ -5,6 +5,7 @@ import { UserInfo } from '../components/UserInfo.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { initialCards, configObj } from '../components/data.js';
+import { Api } from '../components/Api.js';
 
 /* img import */
 import imgTrashVector from '../images/trash-vector.svg';
@@ -98,3 +99,12 @@ validatorTitle.enableValidation();
 
 const validatorCard = new FormValidator(configObj, popupCardForm);
 validatorCard.enableValidation();
+
+const apiDebug = new Api();
+apiDebug.getProfileInfo()
+    .then((data) => {
+        userInfo.setUserInfo({
+            name: data.name,
+            position: data.about,
+        })
+    })

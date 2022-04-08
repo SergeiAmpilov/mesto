@@ -66,6 +66,12 @@ const positionInput = popupContainerTitle.querySelector('.popup__form-field_fiel
 const popupCard = document.querySelector('.popup_prefix_card');
 const popupCardForm = popupCard.querySelector('.popup__form');
 
+// popup-confirm
+const popupConfirm = (new PopupWithForm('.popup_prefix_confirm', () => {
+    configObj.cardOwner.removeFromDom()
+    popupConfirm.close()
+})).setEventListeners();
+
 function openPopupTitle() {
     const info = userInfo.getUserInfo();
     nameInput.value = info.name;
@@ -92,6 +98,9 @@ function createCard(title, img, id, likeCount) {
         likeCount,
         handleCardClick: () => {
             popupImageElement.open(img, title);
+        },
+        handleRemoveClick: () => {
+            popupConfirm.open();
         },
     }, '.item-template').generateCard();
 }

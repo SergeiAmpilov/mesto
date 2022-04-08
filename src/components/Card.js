@@ -1,3 +1,5 @@
+import { configObj } from './data.js'
+
 class Card {
     
     constructor(data, templateSelector, id) {
@@ -8,6 +10,7 @@ class Card {
         this.likeCount = data.likeCount;
 
         this._handleCardClick = data.handleCardClick;
+        this._handleRemoveClick = data.handleRemoveClick;
     }
 
     _getTemplate() {
@@ -22,10 +25,15 @@ class Card {
 
     _handleLikeClick(event) {
         this._elementLike.classList.toggle('element__like_active');
-        console.log('card id', this._id);
+        // console.log('card id', this._id);
     }
 
     _handleRemoveElement(event) {
+        configObj.cardOwner = this;
+        this._handleRemoveClick()
+    }
+
+    removeFromDom() {
         this._element.remove();
         this._element = null;
     }

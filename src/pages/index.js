@@ -27,7 +27,7 @@ const popupTitleElement = (new PopupWithForm('.popup_prefix_title', (inputValues
         about: inputValues.position
     }). then( (data) => {
         // после обновления данных на сервере обновляем данные на форме
-        userInfo.setUserInfo({...inputValues, url: data.avatar});
+        userInfo.setUserInfo({name: data.name, position: data.about, url: data.avatar});
         popupTitleElement.close();
         validatorTitle.toggleButtonState();
     })

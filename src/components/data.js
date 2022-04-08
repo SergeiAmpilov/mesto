@@ -5,5 +5,4 @@ export const configObj = {
     inactiveButtonClass: 'popup__button-submit_inactive',
     inputErrorClass: 'popup__form-field_type_error',
     errorClass: 'popup__error-text_visible',
-    likeCountSelector: '.element__like-count',
   };

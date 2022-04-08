@@ -5,6 +5,7 @@ class Card {
         this._title = data.title;
         this._img = data.img;
         this._id = data.id;
+        this.likeCount = data.likeCount;
 
         this._handleCardClick = data.handleCardClick;
     }
@@ -50,6 +51,7 @@ class Card {
         this._setEventListeners();
         
         this._element.querySelector('.element__title').textContent = this._title;
+        this._element.querySelector('.element__like-count').textContent = this.likeCount;
         this._elementImage.src = this._img;
         this._elementImage.alt = this._title;
     

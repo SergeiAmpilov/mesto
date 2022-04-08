@@ -16,6 +16,7 @@ import imgHeaderLogo from '../images/header-logo.svg';
 import './index.css';
 
 const api = new Api();
+let cardListSection = undefined;
 
 const buttonEditor = document.querySelector('.profile__pen');
 const buttonCardOpen = document.querySelector('.profile__add-button');
@@ -25,7 +26,7 @@ const popupTitleElement = (new PopupWithForm('.popup_prefix_title', (inputValues
     api.updateProfileInfo({
         name: inputValues.name,
         about: inputValues.position
-    }). then( (data) => {
+    }).then( (data) => {
         // после обновления данных на сервере обновляем данные на форме
         userInfo.setUserInfo({name: data.name, position: data.about, url: data.avatar});
         popupTitleElement.close();
@@ -33,12 +34,15 @@ const popupTitleElement = (new PopupWithForm('.popup_prefix_title', (inputValues
     })
 })).setEventListeners();
 const popupCardElement = (new PopupWithForm('.popup_prefix_card', (inputValues) => {
-    const newCard = createCard(inputValues.name.trim(), inputValues.url.trim());    
-    cardListSection.addItem(newCard);
+    api.addCard({name: inputValues.name.trim(), link: inputValues.url.trim()})
+        .then((data) => {
+            // когда успешно добавили на сервер карточку отрисуем в интерфейсе
+            const newCard = createCard(data.name, data.link, data._id);    
+            cardListSection.addItem(newCard);
 
-    popupCardElement.close();
-    validatorCard.toggleButtonState();
-
+            popupCardElement.close();
+            validatorCard.toggleButtonState();
+        })
 })).setEventListeners();
 const popupImageElement = (new PopupWithImage('.popup_prefix_image')).setEventListeners();
 
@@ -114,7 +118,7 @@ api.getProfileInfo()
 
 api.getCards()
     .then( (data) => {
-        const cardListSection = new Section({
+        cardListSection = new Section({
             items: data,
             renderer: (item) => {
                 const newCard = createCard(item.name, item.link, item._id);

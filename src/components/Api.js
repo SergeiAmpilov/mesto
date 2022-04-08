@@ -49,11 +49,23 @@ export class Api {
     getCards() {
         return this._request('cards')
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 return data;
             })
             .catch((err) => {
                 console.log('Произошла ошибка', err);
             })
+    }
+
+    addCard({name, link}) {
+        return this._request('cards', {name, link}, 'POST')
+                .then((data) => {
+                    // console.log(data)
+                    return data
+                })
+                .catch((err) => {
+                    console.log('Произошла ошибка', err);
+                })
+
     }
 }

@@ -4,5 +4,6 @@ export const configObj = {
     submitButtonSelector: '.popup__button-submit',
     inactiveButtonClass: 'popup__button-submit_inactive',
     inputErrorClass: 'popup__form-field_type_error',
-    errorClass: 'popup__error-text_visible'
+    errorClass: 'popup__error-text_visible',
+    likeCountSelector: '.element__like-count',
   };

@@ -37,7 +37,7 @@ const popupCardElement = (new PopupWithForm('.popup_prefix_card', (inputValues) 
     api.addCard({name: inputValues.name.trim(), link: inputValues.url.trim()})
         .then((data) => {
             // когда успешно добавили на сервер карточку отрисуем в интерфейсе
-            const newCard = createCard(data.name, data.link, data._id, 0);    
+            const newCard = createCard(data.name, data.link, data._id, 0, true);    
             cardListSection.addItem(newCard);
 
             popupCardElement.close();
@@ -90,12 +90,13 @@ buttonCardOpen.addEventListener('click', function (event) {
     popupCardElement.open();
 });
 
-function createCard(title, img, id, likeCount) {
+function createCard(title, img, id, likeCount, ownerId) {
     return new Card({
         title,
         img,
         id,
         likeCount,
+        isMy: (ownerId === true ? ownerId : api.getMyId() == ownerId),
         handleCardClick: () => {
             popupImageElement.open(img, title);
         },
@@ -131,7 +132,7 @@ api.getCards()
         cardListSection = new Section({
             items: data,
             renderer: (item) => {
-                const newCard = createCard(item.name, item.link, item._id, item.likes.length);
+                const newCard = createCard(item.name, item.link, item._id, item.likes.length, item.owner._id);
                 cardListSection.addItem(newCard);        
             }
         }, '.elements');

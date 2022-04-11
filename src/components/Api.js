@@ -49,7 +49,7 @@ export class Api {
     getCards() {
         return this._request('cards')
             .then((data) => {
-                // console.log(data);
+                console.log(data);
                 return data;
             })
             .catch((err) => {
@@ -67,5 +67,9 @@ export class Api {
                     console.log('Произошла ошибка', err);
                 })
 
+    }
+
+    getMyId() {
+        return this._userId;
     }
 }

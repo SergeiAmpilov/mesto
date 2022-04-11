@@ -68,8 +68,10 @@ const popupCardForm = popupCard.querySelector('.popup__form');
 
 // popup-confirm
 const popupConfirm = (new PopupWithForm('.popup_prefix_confirm', () => {
-    configObj.cardOwner.removeFromDom()
-    popupConfirm.close()
+    api.deleteCard( configObj.cardOwner.getCardId() ).then( () => {
+        configObj.cardOwner.removeFromDom()
+        popupConfirm.close()
+    })
 })).setEventListeners();
 
 function openPopupTitle() {

@@ -36,14 +36,13 @@ export class Api {
 
     updateProfileInfo({name, about}) {
         return this._request('users/me', {name, about}, 'PATCH')
-        .then( (data) => {
-            // console.log(data);
-            return data;
-        })
-        .catch((err) => {
-            console.log('Произошла ошибка', err);
-        })
-
+            .then( (data) => {
+                // console.log(data);
+                return data;
+            })
+            .catch((err) => {
+                console.log('Произошла ошибка', err);
+            })
     }
 
     getCards() {
@@ -71,5 +70,16 @@ export class Api {
 
     getMyId() {
         return this._userId;
+    }
+
+    deleteCard(cardId) {
+        return this._request(`cards/${cardId}`, false, 'DELETE')
+            .then((data) => {
+                console.log('delete card', data)
+                return data
+            })
+            .catch((err) => {
+                console.log('Произошла ошибка', err);
+            })
     }
 }

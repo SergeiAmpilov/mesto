@@ -74,6 +74,10 @@ class Card {
     
         return this._element;
     }
+
+    getCardId() {
+        return this._id;
+    }
 }
 
 

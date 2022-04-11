@@ -92,12 +92,13 @@ buttonCardOpen.addEventListener('click', function (event) {
     popupCardElement.open();
 });
 
-function createCard(title, img, id, likeCount, ownerId) {
+function createCard(title, img, id, likeCount, ownerId, isLiked = false) {
     return new Card({
         title,
         img,
         id,
         likeCount,
+        isLiked,
         isMy: (ownerId === true ? ownerId : api.getMyId() == ownerId),
         handleCardClick: () => {
             popupImageElement.open(img, title);
@@ -105,6 +106,12 @@ function createCard(title, img, id, likeCount, ownerId) {
         handleRemoveClick: () => {
             popupConfirm.open();
         },
+        likeClick: () => {
+            api.like(id)
+        },
+        unlikeClick: () => {
+            api.unlike(id)
+        }
     }, '.item-template').generateCard();
 }
 
@@ -131,10 +138,20 @@ api.getProfileInfo()
 
 api.getCards()
     .then( (data) => {
+        const myProfileId = api.getMyId();
         cardListSection = new Section({
             items: data,
             renderer: (item) => {
-                const newCard = createCard(item.name, item.link, item._id, item.likes.length, item.owner._id);
+                
+                const newCard = createCard(
+                    item.name,
+                    item.link,
+                    item._id,
+                    item.likes.length,
+                    item.owner._id,
+                    item.likes.filter( element => element._id == myProfileId).length
+                    );
+                
                 cardListSection.addItem(newCard);        
             }
         }, '.elements');

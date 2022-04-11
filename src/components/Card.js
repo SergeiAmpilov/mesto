@@ -12,6 +12,10 @@ class Card {
 
         this._handleCardClick = data.handleCardClick;
         this._handleRemoveClick = data.handleRemoveClick;
+        this._likeClick = data.likeClick;
+        this._unlikeClick = data.unlikeClick;
+
+        this._isLiked = data.isLiked; /* начальное состояние лайка */
     }
 
     _getTemplate() {
@@ -30,7 +34,15 @@ class Card {
 
     _handleLikeClick(event) {
         this._elementLike.classList.toggle('element__like_active');
-        // console.log('card id', this._id);
+
+        this._isLiked = !this._isLiked;
+
+        if (this._isLiked) {
+            this._likeClick()
+        } else {
+            this._unlikeClick()
+        }
+
     }
 
     _handleRemoveElement(event) {
@@ -44,8 +56,8 @@ class Card {
     }
 
     _setEventListeners() {
-        this._elementLike = this._element.querySelector('.element__like');
-        this._elementImage = this._element.querySelector('.element__image');
+        
+        
 
         this._elementLike.addEventListener('click', (event) => {
             this._handleLikeClick(event);
@@ -65,12 +77,20 @@ class Card {
 
     generateCard() {
         this._element = this._getTemplate();
-        this._setEventListeners();
+        this._elementLike = this._element.querySelector('.element__like');
+        this._elementImage = this._element.querySelector('.element__image');
         
         this._element.querySelector('.element__title').textContent = this._title;
         this._element.querySelector('.element__like-count').textContent = this.likeCount;
         this._elementImage.src = this._img;
         this._elementImage.alt = this._title;
+
+        if (this._isLiked) {
+            // установим изначальное состояние лайка
+            this._elementLike.classList.add('element__like_active');
+        }
+
+        this._setEventListeners();
     
         return this._element;
     }

@@ -82,4 +82,24 @@ export class Api {
                 console.log('Произошла ошибка', err);
             })
     }
+
+    like(cardId) {
+        return this._request(`cards/${cardId}/likes`, false, 'PUT')
+            .then((data) => {
+                console.log('like', data)
+            })
+            .catch((err) => {
+                console.log('Произошла ошибка', err);
+            })
+    }
+
+    unlike(cardId) {
+        return this._request(`cards/${cardId}/likes`, false, 'DELETE')
+            .then((data) => {
+                console.log('unlike', data)
+            })
+            .catch((err) => {
+                console.log('Произошла ошибка', err);
+            })
+    }
 }

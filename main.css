@@ -18,6 +18,8 @@
 .element__image{border-radius:10px 10px 0 0;height:282px;min-height:282px;transition:opacity 1s linear;width:100%}.element__image:hover{opacity:.8}
 .element__like{background-color:transparent;background-image:url(7913ddfd147a48616b09.svg);background-repeat:no-repeat;border:none;height:19px;margin:0;padding:0;transition:opacity 1s linear;width:22px}.element__like:hover{cursor:pointer;opacity:.5}
 .element__like_active{background-image:url(fe17a515669479b1e649.svg)}.element__like_active:hover{opacity:.5}
+.element__like-count{color:#000;font-size:.81rem;line-height:1;margin:3px 0 0}
+.element__like-group{text-align:center}
 .element__trash{height:19px;position:absolute;right:20px;top:20px;transition:opacity 1s linear;width:18px}.element__trash:hover{cursor:pointer;opacity:.6}
 .footer{margin:67px auto 60px;max-width:880px}@media screen and (max-width:1024px){.footer{max-width:88%}}@media screen and (max-width:600px){.footer{margin:48px auto 36px}}
 .footer__copyright{color:#545454;font-size:1.12rem;line-height:1.21;margin:0}@media screen and (max-width:600px){.footer__copyright{font-size:.87rem}}

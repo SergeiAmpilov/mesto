@@ -109,7 +109,7 @@ export class Api {
         // PATCH https://mesto.nomoreparties.co/v1/cohortId/users/me/avatar
         return this._request('users/me/avatar', {avatar: avatarUrl}, 'PATCH')
                 .then((data) => {
-                    console.log('update avatar', data)
+                    // console.log('update avatar', data)
                     return data
                 })
                 .catch((err) => {

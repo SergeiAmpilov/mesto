@@ -21,6 +21,15 @@ let cardListSection = undefined;
 const buttonEditor = document.querySelector('.profile__pen');
 const buttonCardOpen = document.querySelector('.profile__add-button');
 
+const avatarImg = document.querySelector('.profile__avatar')
+
+// userinfo
+const userInfo = new UserInfo({
+    nameSelector: '.profile__title',
+    positionSelector: '.profile__subtitle',
+    iconSelector: '.profile__avatar',
+});
+
 // popup-new
 const popupTitleElement = (new PopupWithForm('.popup_prefix_title', (inputValues) => {
     api.updateProfileInfo({
@@ -45,13 +54,19 @@ const popupCardElement = (new PopupWithForm('.popup_prefix_card', (inputValues) 
         })
 })).setEventListeners();
 const popupImageElement = (new PopupWithImage('.popup_prefix_image')).setEventListeners();
+const popupAvatar = (new PopupWithForm('.popup_prefix_avatar', (inputValues) => {
+    // console.log('submit avatar with input values', inputValues)
+    api.updateAvatar(inputValues.url)
+        .then( (data) => {
+            // теперь нужно поставить новый аватар
+            userInfo.refreshAvatarOnForm(data.avatar)
+            popupAvatar.close()
+        })
+    
+    
+})).setEventListeners()
 
-// userinfo
-const userInfo = new UserInfo({
-    nameSelector: '.profile__title',
-    positionSelector: '.profile__subtitle',
-    iconSelector: '.profile__avatar',
-});
+
 
 
 // popup-title
@@ -115,6 +130,9 @@ function createCard(title, img, id, likeCount, ownerId, isLiked = false) {
     }, '.item-template').generateCard();
 }
 
+avatarImg.addEventListener('click', (evt) => {
+    popupAvatar.open()
+})
 
 /* validation */
 const validatorTitle = new FormValidator(configObj, popupTitleForm);

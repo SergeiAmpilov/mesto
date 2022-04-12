@@ -18,4 +18,8 @@ export class UserInfo {
         this._positionElement.textContent = position;
         this._iconElement.src = url;
     }
+
+    refreshAvatarOnForm(url) {
+        this._iconElement.src = url
+    }
 }

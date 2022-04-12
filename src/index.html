@@ -89,6 +89,20 @@
             </form>
         </div>
     </div>
+    <div class="popup popup_prefix_avatar">
+        <div class="popup__container">
+            <button class="popup__close" type="button" title="Закрыть"></button>
+            <h3 class="popup__title">Обновить аватар</h3>
+            <form class='popup__form'>
+                <label for="" class="popup__form-group">
+                    <input type="url" name="url" id="url-input" placeholder="Ссылка на картинку" class="popup__form-field popup__form-field_field_url" required>
+                    <span class="popup__error-text url-input-error">Сообщение об ошибке</span>
+                </label>
+                <button type="submit" class="popup__button-submit">Сохранить</button>
+            </form>
+
+        </div>
+    </div>
     <template class="item-template">
         <li class="element">
             <img src="<%=require('./images/header-logo.svg')%>" alt="Карачаевск" class="element__image">

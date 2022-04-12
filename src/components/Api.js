@@ -87,6 +87,7 @@ export class Api {
         return this._request(`cards/${cardId}/likes`, false, 'PUT')
             .then((data) => {
                 console.log('like', data)
+                return data
             })
             .catch((err) => {
                 console.log('Произошла ошибка', err);
@@ -97,6 +98,7 @@ export class Api {
         return this._request(`cards/${cardId}/likes`, false, 'DELETE')
             .then((data) => {
                 console.log('unlike', data)
+                return data
             })
             .catch((err) => {
                 console.log('Произошла ошибка', err);

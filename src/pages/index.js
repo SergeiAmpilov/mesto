@@ -107,10 +107,10 @@ function createCard(title, img, id, likeCount, ownerId, isLiked = false) {
             popupConfirm.open();
         },
         likeClick: () => {
-            api.like(id)
+            return api.like(id)
         },
         unlikeClick: () => {
-            api.unlike(id)
+            return api.unlike(id)
         }
     }, '.item-template').generateCard();
 }

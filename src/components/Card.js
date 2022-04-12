@@ -38,10 +38,20 @@ class Card {
         this._isLiked = !this._isLiked;
 
         if (this._isLiked) {
-            this._likeClick()
+            this._likeClick().then( (data) => {
+                this.likeCount = data.likes.length;
+                this._refreshLikeCount()
+                return data
+            })
         } else {
-            this._unlikeClick()
+            this._unlikeClick().then( (data) => {
+                this.likeCount = data.likes.length;
+                this._refreshLikeCount()
+                return data
+            })
         }
+
+        // set new likes count
 
     }
 
@@ -81,7 +91,7 @@ class Card {
         this._elementImage = this._element.querySelector('.element__image');
         
         this._element.querySelector('.element__title').textContent = this._title;
-        this._element.querySelector('.element__like-count').textContent = this.likeCount;
+        this._refreshLikeCount()
         this._elementImage.src = this._img;
         this._elementImage.alt = this._title;
 
@@ -97,6 +107,11 @@ class Card {
 
     getCardId() {
         return this._id;
+    }
+
+    _refreshLikeCount() {
+        this._element.querySelector('.element__like-count').textContent = this.likeCount;
+
     }
 }
 

@@ -75,7 +75,7 @@ export class Api {
     deleteCard(cardId) {
         return this._request(`cards/${cardId}`, false, 'DELETE')
             .then((data) => {
-                console.log('delete card', data)
+                // console.log('delete card', data)
                 return data
             })
             .catch((err) => {
@@ -86,7 +86,7 @@ export class Api {
     like(cardId) {
         return this._request(`cards/${cardId}/likes`, false, 'PUT')
             .then((data) => {
-                console.log('like', data)
+                // console.log('like', data)
                 return data
             })
             .catch((err) => {
@@ -97,11 +97,23 @@ export class Api {
     unlike(cardId) {
         return this._request(`cards/${cardId}/likes`, false, 'DELETE')
             .then((data) => {
-                console.log('unlike', data)
+                // console.log('unlike', data)
                 return data
             })
             .catch((err) => {
                 console.log('Произошла ошибка', err);
             })
+    }
+
+    updateAvatar(avatarUrl) {
+        // PATCH https://mesto.nomoreparties.co/v1/cohortId/users/me/avatar
+        return this._request('users/me/avatar', {avatar: avatarUrl}, 'PATCH')
+                .then((data) => {
+                    console.log('update avatar', data)
+                    return data
+                })
+                .catch((err) => {
+                    console.log('Произошла ошибка', err);
+                })
     }
 }

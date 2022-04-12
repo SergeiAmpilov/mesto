@@ -141,6 +141,9 @@ validatorTitle.enableValidation();
 const validatorCard = new FormValidator(configObj, popupCardForm);
 validatorCard.enableValidation();
 
+const validatorAvatar = new FormValidator(configObj, document.querySelector('.popup_prefix_avatar .popup__form'));
+validatorAvatar.enableValidation();
+
 /* == API == */
 
 

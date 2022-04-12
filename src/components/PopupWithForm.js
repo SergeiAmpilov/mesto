@@ -33,6 +33,10 @@ class PopupWithForm extends Popup {
         super.close();
     }
 
+    setButtonText(buttonText) {
+        this._formElement.querySelector(configObj.submitButtonSelector).innerText = buttonText;
+    }
+
 }
 
 export { PopupWithForm };

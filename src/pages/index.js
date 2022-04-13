@@ -66,7 +66,7 @@ const popupCardElement = (new PopupWithForm('.popup_prefix_card', (inputValues) 
 })).setEventListeners();
 const popupImageElement = (new PopupWithImage('.popup_prefix_image')).setEventListeners();
 const popupAvatar = (new PopupWithForm('.popup_prefix_avatar', (inputValues) => {
-    popupTitleElement.setButtonText('Сохранение...')
+    popupAvatar.setButtonText('Сохранение...')
     api.updateAvatar(inputValues.url)
         .then( (data) => {
             // теперь нужно поставить новый аватар
@@ -76,7 +76,7 @@ const popupAvatar = (new PopupWithForm('.popup_prefix_avatar', (inputValues) => 
         })
         .catch(err => console.log(`Ошибка.....: ${err}`))
         .finally(() => {
-            popupTitleElement.setButtonText('Сохранить')
+            popupAvatar.setButtonText('Сохранить')
         })
 })).setEventListeners()
 

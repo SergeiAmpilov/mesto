@@ -41,10 +41,14 @@ const popupTitleElement = (new PopupWithForm('.popup_prefix_title', (inputValues
         userInfo.setUserInfo({name: data.name, position: data.about, url: data.avatar});
         popupTitleElement.close();
         validatorTitle.toggleButtonState();
+    })
+    .finally(() => {
         popupTitleElement.setButtonText('Сохранить')
     })
+
 })).setEventListeners();
 const popupCardElement = (new PopupWithForm('.popup_prefix_card', (inputValues) => {
+    popupCardElement.setButtonText('Сохранение...')
     api.addCard({name: inputValues.name.trim(), link: inputValues.url.trim()})
         .then((data) => {
             // когда успешно добавили на сервер карточку отрисуем в интерфейсе
@@ -53,6 +57,9 @@ const popupCardElement = (new PopupWithForm('.popup_prefix_card', (inputValues) 
 
             popupCardElement.close();
             validatorCard.toggleButtonState();
+        })
+        .finally(() => {
+            popupCardElement.setButtonText('Создать')
         })
 })).setEventListeners();
 const popupImageElement = (new PopupWithImage('.popup_prefix_image')).setEventListeners();
@@ -63,6 +70,9 @@ const popupAvatar = (new PopupWithForm('.popup_prefix_avatar', (inputValues) => 
             // теперь нужно поставить новый аватар
             userInfo.refreshAvatarOnForm(data.avatar)
             popupAvatar.close()
+            popupTitleElement.setButtonText('Сохранить')
+        })
+        .finally(() => {
             popupTitleElement.setButtonText('Сохранить')
         })
     

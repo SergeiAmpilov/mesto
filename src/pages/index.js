@@ -178,39 +178,37 @@ const validatorAvatar = new FormValidator(configObj, document.querySelector('.po
 validatorAvatar.enableValidation();
 
 /* == API == */
-
-
-api.getProfileInfo()
-    .then((data) => {
-        api.setUserId(data._id)
-        userInfo.setUserInfo({
-            name: data.name,
-            position: data.about,
-            url: data.avatar,
-        })
+Promise.all([
+    api.getProfileInfo(),
+    api.getCards()
+]).
+then( ([data1, data2]) => {
+    /* profile */
+    const myProfileId = data1._id;
+    api.setUserId(myProfileId)
+    userInfo.setUserInfo({
+        name: data1.name,
+        position: data1.about,
+        url: data1.avatar,
     })
-    .catch(err => console.log(`Ошибка.....: ${err}`))
 
-
-api.getCards()
-    .then( (data) => {
-        const myProfileId = api.getMyId();
-        cardListSection = new Section({
-            items: data,
-            renderer: (item) => {
-                
-                const newCard = createCard(
-                    item.name,
-                    item.link,
-                    item._id,
-                    item.likes.length,
-                    item.owner._id,
-                    item.likes.filter( element => element._id == myProfileId).length
-                    );
-                
-                cardListSection.addItem(newCard);        
-            }
-        }, '.elements');
-        cardListSection.renderItems();
-    })
-    .catch(err => console.log(`Ошибка.....: ${err}`))
+    /* cards */
+    cardListSection = new Section({
+        items: data2,
+        renderer: (item) => {
+            
+            const newCard = createCard(
+                item.name,
+                item.link,
+                item._id,
+                item.likes.length,
+                item.owner._id,
+                item.likes.filter( element => element._id == myProfileId).length
+                );
+            
+            cardListSection.addItem(newCard);        
+        }
+    }, '.elements');
+    cardListSection.renderItems();
+})
+.catch(err => console.log(`Ошибка.....: ${err}`))

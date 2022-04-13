@@ -4,7 +4,7 @@ import { Section } from '../components/Section.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
-import { configObj } from '../components/data.js';
+import { configObj } from '../constants/constants.js';
 import { Api } from '../components/Api.js';
 
 /* img import */

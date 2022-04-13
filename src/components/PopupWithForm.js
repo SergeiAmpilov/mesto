@@ -1,5 +1,5 @@
 import { Popup } from './Popup.js' ;
-import { configObj } from './data.js' ;
+import { configObj } from '../constants/constants.js' ;
 
 class PopupWithForm extends Popup {
 

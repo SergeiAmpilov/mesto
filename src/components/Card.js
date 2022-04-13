@@ -1,4 +1,4 @@
-import { configObj } from './data.js'
+import { configObj } from '../constants/constants.js'
 
 class Card {
     

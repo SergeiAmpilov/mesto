@@ -16,7 +16,18 @@ import imgHeaderLogo from '../images/header-logo.svg';
 import './index.css';
 
 const api = new Api();
-let cardListSection = undefined;
+const cardListSection = new Section( (item) => {
+        const newCard = createCard(
+            item.name,
+            item.link,
+            item._id,
+            item.likes.length,
+            item.owner._id,
+            item.likes.filter( element => element._id == api.getMyId()).length
+            );
+        
+        cardListSection.addItem(newCard);        
+    } , '.elements');
 
 const buttonEditor = document.querySelector('.profile__pen');
 const buttonCardOpen = document.querySelector('.profile__add-button');
@@ -181,8 +192,8 @@ validatorAvatar.enableValidation();
 Promise.all([
     api.getProfileInfo(),
     api.getCards()
-]).
-then( ([data1, data2]) => {
+])
+.then( ([data1, data2]) => {
     /* profile */
     const myProfileId = data1._id;
     api.setUserId(myProfileId)
@@ -193,22 +204,6 @@ then( ([data1, data2]) => {
     })
 
     /* cards */
-    cardListSection = new Section({
-        items: data2,
-        renderer: (item) => {
-            
-            const newCard = createCard(
-                item.name,
-                item.link,
-                item._id,
-                item.likes.length,
-                item.owner._id,
-                item.likes.filter( element => element._id == myProfileId).length
-                );
-            
-            cardListSection.addItem(newCard);        
-        }
-    }, '.elements');
-    cardListSection.renderItems();
+    cardListSection.renderItems(data2);
 })
 .catch(err => console.log(`Ошибка.....: ${err}`))

@@ -143,9 +143,24 @@ function createCard(title, img, id, likeCount, ownerId, isLiked = false) {
     }, '.item-template').generateCard();
 }
 
-avatarImg.addEventListener('click', (evt) => {
+const buttonAvatarEditor = document.querySelector('.profile__avatar-button');
+
+avatarImg.addEventListener('mouseover', (evt) => {
+    toggleButtonAvatarEditor(true)
+})
+
+buttonAvatarEditor.addEventListener('mouseout', (evt) => {
+    toggleButtonAvatarEditor(false)
+})
+
+buttonAvatarEditor.addEventListener('click', (evt) => {
     popupAvatar.open()
 })
+
+const toggleButtonAvatarEditor = (isVisible) => {
+    buttonAvatarEditor.style.visibility = isVisible ? 'visible' : 'hidden';
+    // console.log(buttonAvatarEditor.style)
+}
 
 /* validation */
 const validatorTitle = new FormValidator(configObj, popupTitleForm);

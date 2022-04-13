@@ -13,7 +13,10 @@
     <main class="content">
         <section class="profile">
             <div class="profile__content">
-                <img src="<%=require('./images/custo-logo.jpg')%>" alt="Логотип пользователя" class="profile__avatar">
+                <div class="profile__avatar-group">
+                    <img src="<%=require('./images/custo-logo.jpg')%>" alt="Логотип пользователя" class="profile__avatar">
+                    <button title="Загрузить новый аватар" class="profile__avatar-button"></button>
+                </div>
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <p class="profile__subtitle">Исследователь океана</p>

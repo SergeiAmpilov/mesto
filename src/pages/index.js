@@ -42,6 +42,7 @@ const popupTitleElement = (new PopupWithForm('.popup_prefix_title', (inputValues
         popupTitleElement.close();
         validatorTitle.toggleButtonState();
     })
+    .catch(err => console.log(`Ошибка.....: ${err}`))
     .finally(() => {
         popupTitleElement.setButtonText('Сохранить')
     })
@@ -58,6 +59,7 @@ const popupCardElement = (new PopupWithForm('.popup_prefix_card', (inputValues) 
             popupCardElement.close();
             validatorCard.toggleButtonState();
         })
+        .catch(err => console.log(`Ошибка.....: ${err}`))
         .finally(() => {
             popupCardElement.setButtonText('Создать')
         })
@@ -72,11 +74,10 @@ const popupAvatar = (new PopupWithForm('.popup_prefix_avatar', (inputValues) => 
             popupAvatar.close()
             popupTitleElement.setButtonText('Сохранить')
         })
+        .catch(err => console.log(`Ошибка.....: ${err}`))
         .finally(() => {
             popupTitleElement.setButtonText('Сохранить')
         })
-    
-    
 })).setEventListeners()
 
 
@@ -96,10 +97,12 @@ const popupCardForm = popupCard.querySelector('.popup__form');
 
 // popup-confirm
 const popupConfirm = (new PopupWithForm('.popup_prefix_confirm', () => {
-    api.deleteCard( configObj.cardOwner.getCardId() ).then( () => {
-        configObj.cardOwner.removeFromDom()
-        popupConfirm.close()
-    })
+    api.deleteCard( configObj.cardOwner.getCardId() )
+        .then( () => {
+            configObj.cardOwner.removeFromDom()
+            popupConfirm.close()
+        })
+        .catch(err => console.log(`Ошибка.....: ${err}`))
 })).setEventListeners();
 
 function openPopupTitle() {
@@ -136,9 +139,11 @@ function createCard(title, img, id, likeCount, ownerId, isLiked = false) {
         },
         likeClick: () => {
             return api.like(id)
+                    .catch(err => console.log(`Ошибка.....: ${err}`))
         },
         unlikeClick: () => {
             return api.unlike(id)
+                    .catch(err => console.log(`Ошибка.....: ${err}`))
         }
     }, '.item-template').generateCard();
 }
@@ -177,12 +182,14 @@ validatorAvatar.enableValidation();
 
 api.getProfileInfo()
     .then((data) => {
+        api.setUserId(data._id)
         userInfo.setUserInfo({
             name: data.name,
             position: data.about,
             url: data.avatar,
         })
     })
+    .catch(err => console.log(`Ошибка.....: ${err}`))
 
 
 api.getCards()
@@ -206,3 +213,4 @@ api.getCards()
         }, '.elements');
         cardListSection.renderItems();
     })
+    .catch(err => console.log(`Ошибка.....: ${err}`))

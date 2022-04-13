@@ -24,48 +24,22 @@ export class Api {
 
     getProfileInfo() {
         return this._request('users/me')
-            .then((data) => {
-                // console.log(data);
-                this._userId = data._id;
-                return data;
-            })
-            .catch((err) => {
-                console.log('Произошла ошибка', err);
-            })
+    }
+
+    setUserId(userId) {
+        this._userId = userId;
     }
 
     updateProfileInfo({name, about}) {
         return this._request('users/me', {name, about}, 'PATCH')
-            .then( (data) => {
-                // console.log(data);
-                return data;
-            })
-            .catch((err) => {
-                console.log('Произошла ошибка', err);
-            })
     }
 
     getCards() {
         return this._request('cards')
-            .then((data) => {
-                console.log(data);
-                return data;
-            })
-            .catch((err) => {
-                console.log('Произошла ошибка', err);
-            })
     }
 
     addCard({name, link}) {
         return this._request('cards', {name, link}, 'POST')
-                .then((data) => {
-                    // console.log(data)
-                    return data
-                })
-                .catch((err) => {
-                    console.log('Произошла ошибка', err);
-                })
-
     }
 
     getMyId() {
@@ -74,46 +48,17 @@ export class Api {
 
     deleteCard(cardId) {
         return this._request(`cards/${cardId}`, false, 'DELETE')
-            .then((data) => {
-                // console.log('delete card', data)
-                return data
-            })
-            .catch((err) => {
-                console.log('Произошла ошибка', err);
-            })
     }
 
     like(cardId) {
         return this._request(`cards/${cardId}/likes`, false, 'PUT')
-            .then((data) => {
-                // console.log('like', data)
-                return data
-            })
-            .catch((err) => {
-                console.log('Произошла ошибка', err);
-            })
     }
 
     unlike(cardId) {
         return this._request(`cards/${cardId}/likes`, false, 'DELETE')
-            .then((data) => {
-                // console.log('unlike', data)
-                return data
-            })
-            .catch((err) => {
-                console.log('Произошла ошибка', err);
-            })
     }
 
     updateAvatar(avatarUrl) {
-        // PATCH https://mesto.nomoreparties.co/v1/cohortId/users/me/avatar
         return this._request('users/me/avatar', {avatar: avatarUrl}, 'PATCH')
-                .then((data) => {
-                    // console.log('update avatar', data)
-                    return data
-                })
-                .catch((err) => {
-                    console.log('Произошла ошибка', err);
-                })
     }
 }

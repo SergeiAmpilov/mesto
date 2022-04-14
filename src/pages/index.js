@@ -193,17 +193,17 @@ Promise.all([
     api.getProfileInfo(),
     api.getCards()
 ])
-.then( ([data1, data2]) => {
+.then( ([profileData, cardList]) => {
     /* profile */
-    const myProfileId = data1._id;
+    const myProfileId = profileData._id;
     api.setUserId(myProfileId)
     userInfo.setUserInfo({
-        name: data1.name,
-        position: data1.about,
-        url: data1.avatar,
+        name: profileData.name,
+        position: profileData.about,
+        url: profileData.avatar,
     })
 
     /* cards */
-    cardListSection.renderItems(data2);
+    cardListSection.renderItems(cardList);
 })
 .catch(err => console.log(`Ошибка.....: ${err}`))

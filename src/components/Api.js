@@ -26,10 +26,6 @@ export class Api {
         return this._request('users/me')
     }
 
-    setUserId(userId) {
-        this._userId = userId;
-    }
-
     updateProfileInfo({name, about}) {
         return this._request('users/me', {name, about}, 'PATCH')
     }
@@ -40,10 +36,6 @@ export class Api {
 
     addCard({name, link}) {
         return this._request('cards', {name, link}, 'POST')
-    }
-
-    getMyId() {
-        return this._userId;
     }
 
     deleteCard(cardId) {

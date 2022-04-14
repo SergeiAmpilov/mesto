@@ -13,13 +13,18 @@ export class UserInfo {
         };
     }
 
-    setUserInfo({name, position, url}) {
+    setUserInfo({name, position, url, id}) {
         this._nameElement.textContent = name;
         this._positionElement.textContent = position;
         this._iconElement.src = url;
+        this._id = id;
     }
 
     refreshAvatarOnForm(url) {
         this._iconElement.src = url
+    }
+
+    getUserId() {
+        return this._id;
     }
 }

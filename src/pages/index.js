@@ -23,7 +23,7 @@ const cardListSection = new Section( (item) => {
             item._id,
             item.likes.length,
             item.owner._id,
-            item.likes.filter( element => element._id == api.getMyId()).length
+            item.likes.filter( element => element._id == userInfo.getUserId()).length
             );
         
         cardListSection.addItem(newCard);        
@@ -141,7 +141,7 @@ function createCard(title, img, id, likeCount, ownerId, isLiked = false) {
         id,
         likeCount,
         isLiked,
-        isMy: (ownerId === true ? ownerId : api.getMyId() == ownerId),
+        isMy: (ownerId === true ? ownerId : userInfo.getUserId() == ownerId),
         handleCardClick: () => {
             popupImageElement.open(img, title);
         },
@@ -196,11 +196,11 @@ Promise.all([
 .then( ([profileData, cardList]) => {
     /* profile */
     const myProfileId = profileData._id;
-    api.setUserId(myProfileId)
     userInfo.setUserInfo({
         name: profileData.name,
         position: profileData.about,
         url: profileData.avatar,
+        id: profileData._id,
     })
 
     /* cards */
